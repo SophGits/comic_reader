@@ -22,6 +22,29 @@ end
 
 gem 'jquery-rails'
 
+gem 'haml-rails'
+
+gem 'feedzirra'
+gem "nokogiri"
+
+gem 'textacular', '~> 3.0'
+gem 'cancan'
+
+gem "fog", "~> 1.3.1"
+# gem 'rmagick'
+gem 'carrierwave'
+
+gem 'devise'
+gem 'omniauth'
+# gem 'omniauth-google-oauth2'
+# gem 'omniauth-facebook'
+# gem ‘omniauth_twitter’
+
+group :development, :test do
+  gem 'pry-rails'
+  gem 'better_errors'
+end
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

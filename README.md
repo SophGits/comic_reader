@@ -1,0 +1,1 @@
+This comic reader was created as a final individual project for the third Web Development Immersive course run by General Assembly, London, in December 2013.

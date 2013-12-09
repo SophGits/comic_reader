@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(:version => 20131209112037) do
   end
 
   create_table "messages", :force => true do |t|
-    t.integer  "sender_id"
     t.integer  "recipient_id"
     t.text     "content"
     t.boolean  "is_read"
@@ -56,10 +55,10 @@ ActiveRecord::Schema.define(:version => 20131209112037) do
   end
 
   create_table "subscriptions", :force => true do |t|
-    t.integer  "feed_url_id"
+    t.integer  "feed_id"
     t.integer  "user_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

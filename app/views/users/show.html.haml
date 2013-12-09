@@ -1,0 +1,6 @@
+%h1 Users Show Page
+%h2 This could display one user's profile, with a 'message' link.
+%h3 Can't message anyone from anywhere else (except sender's inbox if they are replying)
+-@users.each do |user|
+  %li
+    #{user.email}

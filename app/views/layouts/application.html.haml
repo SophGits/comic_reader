@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title Gallery App
+    %title Comic Reader
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
@@ -14,10 +14,12 @@
           = link_to 'Edit Profile', edit_user_registration_path
           \|
           = link_to 'Logout',  destroy_user_session_path, method: :delete
+          \|
+          =link_to 'Drawing Board', drawing_board_path(@user)
         - else
           = link_to 'Sign up', new_user_registration_path
           \|
-          = link_to 'Login', new_user_session_path
+          = link_to 'Sign in', new_user_session_path
 
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"

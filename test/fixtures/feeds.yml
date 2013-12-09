@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  feed_logo: MyString
+  main_url: MyString
+  feed_url: MyString
+  keywords: MyString
+  summary: MyString
+  author: MyString
+  flag_count: 1
+  up_vote_count: 1
+  down_vote_count: 1
+
+two:
+  feed_logo: MyString
+  main_url: MyString
+  feed_url: MyString
+  keywords: MyString
+  summary: MyString
+  author: MyString
+  flag_count: 1
+  up_vote_count: 1
+  down_vote_count: 1

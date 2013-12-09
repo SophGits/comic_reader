@@ -1,0 +1,33 @@
+%p#notice= notice
+
+%p
+  %b Feed logo:
+  = @feed.feed_logo
+%p
+  %b Main url:
+  = @feed.main_url
+%p
+  %b Feed url:
+  = @feed.feed_url
+%p
+  %b Keywords:
+  = @feed.keywords
+%p
+  %b Summary:
+  = @feed.summary
+%p
+  %b Author:
+  = @feed.author
+%p
+  %b Flag count:
+  = @feed.flag_count
+%p
+  %b Up vote count:
+  = @feed.up_vote_count
+%p
+  %b Down vote count:
+  = @feed.down_vote_count
+
+= link_to 'Edit', edit_feed_path(@feed)
+\|
+= link_to 'Back', feeds_path

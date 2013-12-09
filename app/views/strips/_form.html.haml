@@ -1,0 +1,25 @@
+= form_for @strip do |f|
+  - if @strip.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@strip.errors.count, "error")} prohibited this strip from being saved:"
+      %ul
+        - @strip.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :strip_url
+    = f.text_field :strip_url
+  .field
+    = f.label :keywords
+    = f.text_field :keywords
+  .field
+    = f.label :flag_count
+    = f.number_field :flag_count
+  .field
+    = f.label :up_vote_count
+    = f.number_field :up_vote_count
+  .field
+    = f.label :down_vote_count
+    = f.number_field :down_vote_count
+  .actions
+    = f.submit 'Save'

@@ -1,0 +1,27 @@
+%h1 Listing strips
+
+%table
+  %tr
+    %th Strip url
+    %th Keywords
+    %th Flag count
+    %th Up vote count
+    %th Down vote count
+    %th
+    %th
+    %th
+
+  - @strips.each do |strip|
+    %tr
+      %td= strip.strip_url
+      %td= strip.keywords
+      %td= strip.flag_count
+      %td= strip.up_vote_count
+      %td= strip.down_vote_count
+      %td= link_to 'Show', strip
+      %td= link_to 'Edit', edit_strip_path(strip)
+      %td= link_to 'Destroy', strip, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Strip', new_strip_path

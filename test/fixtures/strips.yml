@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  strip_url: MyString
+  keywords: MyString
+  flag_count: 1
+  up_vote_count: 1
+  down_vote_count: 1
+
+two:
+  strip_url: MyString
+  keywords: MyString
+  flag_count: 1
+  up_vote_count: 1
+  down_vote_count: 1

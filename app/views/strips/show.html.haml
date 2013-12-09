@@ -1,0 +1,21 @@
+%p#notice= notice
+
+%p
+  %b Strip url:
+  = @strip.strip_url
+%p
+  %b Keywords:
+  = @strip.keywords
+%p
+  %b Flag count:
+  = @strip.flag_count
+%p
+  %b Up vote count:
+  = @strip.up_vote_count
+%p
+  %b Down vote count:
+  = @strip.down_vote_count
+
+= link_to 'Edit', edit_strip_path(@strip)
+\|
+= link_to 'Back', strips_path

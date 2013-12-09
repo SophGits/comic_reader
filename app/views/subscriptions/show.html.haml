@@ -1,0 +1,12 @@
+%p#notice= notice
+
+%p
+  %b Feed url:
+  = @subscription.feed_url_id
+%p
+  %b User:
+  = @subscription.user_id
+
+= link_to 'Edit', edit_subscription_path(@subscription)
+\|
+= link_to 'Back', subscriptions_path

@@ -1,5 +1,15 @@
 ComicReader::Application.routes.draw do
-  resources :messages
+
+  devise_for :users
+
+  resources :users do
+    resources :comments
+  end
+
+  root :to => "home#index"
+
+
+  resources :messages, only: [:create, :destroy]
 
 
   resources :subscriptions
@@ -11,10 +21,6 @@ ComicReader::Application.routes.draw do
   resources :strips
 
 
-  resources :comments
 
 
-  devise_for :users
-
-  root :to => "home#index"
 end

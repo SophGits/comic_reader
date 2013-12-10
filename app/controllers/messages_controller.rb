@@ -2,7 +2,8 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.json
   def index
-    @messages = Message.all
+    current_user_id = current_user.id
+    @messages = Message.where("sender_id = ? OR recipient_id = ?", current_user_id, current_user_id)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -80,4 +81,12 @@ class MessagesController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+  def conversation
+    user_1_id = current_user.id
+    user_2_id = params[:user_id]
+    @messages = Message.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)", user_1_id, user_2_id, user_2_id, user_1_id)
+  end
+
 end

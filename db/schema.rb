@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20131209112037) do
   end
 
   create_table "messages", :force => true do |t|
+    t.integer  "sender_id"
     t.integer  "recipient_id"
     t.text     "content"
     t.boolean  "is_read"

@@ -5,4 +5,13 @@ Feed.destroy_all
 Subscription.destroy_all
 Strip.destroy_all
 
-bob = User.create(username: "Bob", email: "bob@bob.com", role: "admin", password: "password", created_at: DateTime.now, avatar="http://andromeda.star.bris.ac.uk/~mbt/treeview/icons/TREE_LOGO.gif")
+bob = User.create(username: "Bob", email: "bob@bob.com", role: "admin", password: "password", created_at: DateTime.now, avatar: "http://andromeda.star.bris.ac.uk/~mbt/treeview/icons/TREE_LOGO.gif")
+bob.save!
+
+shaniqua = User.create(username: "shaniqua", email: "shaniqua@shaniqua.com", role: "user", password: "password", created_at: DateTime.now, avatar:"")
+shaniqua.save!
+
+#Bob messages Shaniqua
+message1 = Message.create(sender_id: bob.id, recipient_id: shaniqua.id, content: "Hello Shaniqua, from Bob", is_read: true)
+# Shaniqua messages Bob
+message2 = Message.create(sender_id: shaniqua.id, recipient_id: bob.id, content: "Hey, Bob! Great to hear from you.", is_read: false)

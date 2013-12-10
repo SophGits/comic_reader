@@ -1,11 +1,11 @@
 %p#notice= notice
 
 %p
-  %b Sender:
-  = @message.sender_id
+  %b From:
+  = @sender.username
 %p
   %b Recipient:
-  = @message.recipient_id
+  = @recipient.username
 %p
   %b Content:
   = @message.content

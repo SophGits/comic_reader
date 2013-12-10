@@ -40,9 +40,9 @@ ActiveRecord::Schema.define(:version => 20131209112037) do
     t.integer  "sender_id"
     t.integer  "recipient_id"
     t.text     "content"
-    t.boolean  "is_read"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.boolean  "is_read",      :default => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "strips", :force => true do |t|

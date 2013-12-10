@@ -3,7 +3,16 @@ class MessagesController < ApplicationController
   # GET /messages.json
   def index
     current_user_id = current_user.id
-    @messages = Message.where("sender_id = ? OR recipient_id = ?", current_user_id, current_user_id)
+    messages = Message.select([:sender_id, :recipient_id]).where("sender_id = ? OR recipient_id = ?", current_user_id, current_user_id)
+
+    user_ids = messages.map {|message| [message.sender_id, message.recipient_id] }
+    user_ids.flatten!.uniq!
+    user_ids.delete(current_user_id)
+
+    @users = []
+    user_ids.each do |user_id|
+      @users << User.select(:username).find(user_id)
+    end
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,6 +24,11 @@ class MessagesController < ApplicationController
   # GET /messages/1.json
   def show
     @message = Message.find(params[:id])
+    @sender = User.find(@message.sender_id)
+    @recipient = User.find(@message.recipient_id)
+
+
+# SOMETHING ABOUT SHOWING THE USERNAME FOR RECIPIENT_ID
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,13 +39,25 @@ class MessagesController < ApplicationController
   # GET /messages/new
   # GET /messages/new.json
   def new
+    current_user_id = current_user.id
     @message = Message.new
+    @message.sender_id = current_user_id
+
+    @other_users = []
+    users = User.all
+    users.each do |user|
+      unless
+        user == current_user
+        @other_users << user
+      end
+    end
 
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @message }
     end
   end
+
 
   # GET /messages/1/edit
   def edit
@@ -42,6 +68,7 @@ class MessagesController < ApplicationController
   # POST /messages.json
   def create
     @message = Message.new(params[:message])
+    @message.sender_id = current_user.id
 
     respond_to do |format|
       if @message.save
@@ -85,7 +112,7 @@ class MessagesController < ApplicationController
 
   def conversation
     user_1_id = current_user.id
-    user_2_id = params[:user_id]
+    user_2_id = User.select(:id).where(username: params[:username]).first.id
     @messages = Message.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)", user_1_id, user_2_id, user_2_id, user_1_id)
   end
 

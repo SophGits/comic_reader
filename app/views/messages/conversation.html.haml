@@ -1,0 +1,15 @@
+%h1 Conversation
+
+- @messages.each do |message|
+  %ul
+    %li= message.sender_id
+    %li= message.recipient_id
+    %li= message.content
+    %li= message.is_read
+    = link_to 'Show', message
+    = link_to 'Edit', edit_message_path(message)
+    = link_to 'Destroy', message, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Message', new_message_path

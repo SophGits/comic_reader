@@ -27,9 +27,6 @@ class MessagesController < ApplicationController
     @sender = User.find(@message.sender_id)
     @recipient = User.find(@message.recipient_id)
 
-
-# SOMETHING ABOUT SHOWING THE USERNAME FOR RECIPIENT_ID
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @message }

@@ -17,7 +17,8 @@
 
   - @feeds.each do |feed|
     %tr
-      %td= feed.feed_logo
+      %td= feed.title
+      %td= feed.logo
       %td= feed.main_url
       %td= feed.feed_url
       %td= feed.keywords

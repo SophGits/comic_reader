@@ -23,7 +23,8 @@ ActiveRecord::Schema.define(:version => 20131209112037) do
   end
 
   create_table "feeds", :force => true do |t|
-    t.string   "feed_logo"
+    t.string   "title"
+    t.string   "logo"
     t.string   "main_url"
     t.string   "feed_url"
     t.string   "keywords"

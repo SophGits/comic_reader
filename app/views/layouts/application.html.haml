@@ -19,6 +19,8 @@
           \|
           =link_to 'Drawing Board', drawing_board_path(@user)
           \|
+          =link_to 'All feeds', feeds_path(@feeds)
+          \|
           =link_to 'inbox (messages list)', messages_path
         - else
           = link_to 'Sign up', new_user_registration_path

@@ -7,8 +7,11 @@
           %li= msg
 
   .field
-    = f.label :feed_logo
-    = f.text_field :feed_logo
+    = f.label :title
+    = f.text_field :title
+  .field
+    = f.label :logo
+    = f.url_field :logo
   .field
     = f.label :main_url
     = f.text_field :main_url

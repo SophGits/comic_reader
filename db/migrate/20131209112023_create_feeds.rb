@@ -1,7 +1,8 @@
 class CreateFeeds < ActiveRecord::Migration
   def change
     create_table :feeds do |t|
-      t.string :feed_logo
+      t.string :title
+      t.string :logo
       t.string :main_url
       t.string :feed_url
       t.string :keywords

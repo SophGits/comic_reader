@@ -2,8 +2,8 @@
 
 - @messages.each do |message|
   %ul
-    %li= message.sender_id
-    %li= message.recipient_id
+    %li= message.sender_username
+    %li= message.recipient_username
     %li= message.content
     %li= message.is_read
     = link_to 'Show', message

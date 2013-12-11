@@ -15,6 +15,9 @@ class StripsController < ApplicationController
   def show
     @strip = Strip.find(params[:id])
 
+
+    # @comments = @strip.comments
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @strip }
@@ -79,5 +82,10 @@ class StripsController < ApplicationController
       format.html { redirect_to strips_url }
       format.json { head :no_content }
     end
+  end
+
+  # GET /strips/random.json
+  def random
+    render json: Strip.where(feed_id: params[:feed_id]).first(order: "RANDOM()")
   end
 end

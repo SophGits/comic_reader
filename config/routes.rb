@@ -9,7 +9,7 @@ ComicReader::Application.routes.draw do
     get   'drawing_board',  :to => "users#drawing_board"
   end
 
-
+  get "/feeds/:feed_id/strips/random", to: "strips#random"
 
   resources :feeds do
     resources :strips do

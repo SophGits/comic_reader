@@ -17,7 +17,7 @@
 
   - @feeds.each do |feed|
     %tr
-      %td= feed.title
+      %td.feed-title{"data-feed-id" => "#{feed.id}"}= feed.title
       %td= feed.logo
       %td= feed.main_url
       %td= feed.feed_url
@@ -34,3 +34,5 @@
 %br
 
 = link_to 'New Feed', new_feed_path
+
+#strips

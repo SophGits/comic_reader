@@ -9,7 +9,9 @@ ComicReader::Application.routes.draw do
     get   'drawing_board',  :to => "users#drawing_board"
   end
 
-  resources :users do
+
+
+  resources :strips do
     resources :comments
   end
 
@@ -20,7 +22,6 @@ ComicReader::Application.routes.draw do
 
   resources :subscriptions
   resources :feeds
-  resources :strips
 
 end
 

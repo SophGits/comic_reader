@@ -24,3 +24,10 @@ message2 = Message.create(sender_id: rita.id, recipient_id: bob.id, content: "Hi
 
 cyanide = Feed.create(title: "Cyanide and Happiness, yo", logo: "a", main_url: "b", feed_url: "http://feeds.feedburner.com/Explosm", keywords: "d", summary: "e", author: "f", flag_count: 0, up_vote_count: 5, down_vote_count: 1, created_at: DateTime.now)
 cyanide.save!
+
+cyanide_strip = Strip.create(strip_url: "http://www.explosm.net/comics/2766/", keywords: "cyanide, individual strip", flag_count: 1, up_vote_count: 1, down_vote_count: 0, created_at: DateTime.now)
+cyanide_strip.save!
+
+
+comment1 = cyanide_strip.comments.create(content: "Hey, I love this one!", flag_count: 0, up_vote_count: 2, down_vote_count: 1)
+comment1.save!

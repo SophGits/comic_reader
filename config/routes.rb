@@ -11,8 +11,10 @@ ComicReader::Application.routes.draw do
 
 
 
-  resources :strips do
-    resources :comments
+  resources :feeds do
+    resources :strips do
+      resources :comments
+    end
   end
 
   root :to => "home#index"
@@ -21,7 +23,6 @@ ComicReader::Application.routes.draw do
   get '/messages/user/:username', :to => "messages#conversation"
 
   resources :subscriptions
-  resources :feeds
 
 end
 

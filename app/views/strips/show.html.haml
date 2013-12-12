@@ -7,7 +7,7 @@
   = @strip.id
 %p
   %b Strip url:
-  = @strip.strip_url
+  = image_tag (@strip.strip_url)
 %p
   %b Keywords:
   = @strip.keywords
@@ -24,9 +24,11 @@
 = link_to 'Edit', edit_feed_strip_path(@feed, @strip)
 = link_to "Back to the #{@feed.title} feed", feed_path(@feed)
 
+%h2 Comments
 = @strip.comments.size
 - @strip.comments.each do |comment|
   %p= comment.content
+  ="posted by #{comment.user_id}" #REALLY THIS NEEDS TO BE USERNAME
 
 %h2 Add a comment:
 = form_for([@feed, @strip, @strip.comments.build]) do |f|

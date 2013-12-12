@@ -18,10 +18,11 @@
       %td= strip.flag_count
       %td= strip.up_vote_count
       %td= strip.down_vote_count
-      %td= link_to 'Show', strip
-      %td= link_to 'Edit', edit_strip_path(strip)
+      %td= link_to 'Show', feed_strip_path
+      %td= link_to 'Edit', edit_feed_strip_path
       %td= link_to 'Destroy', strip, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Strip', new_strip_path
+= link_to 'New Strip', new_feed_strip_path
+/ = link_to 'Comment', new_strip_comment_path

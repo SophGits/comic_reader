@@ -42,7 +42,7 @@ gem 'omniauth'
 
 group :development, :test do
   gem 'pry-rails'
-  gem 'better_errors'
+  # gem 'better_errors'
 end
 
 # To use ActiveModel has_secure_password

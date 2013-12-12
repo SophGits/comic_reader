@@ -17,6 +17,8 @@ ComicReader::Application.routes.draw do
     end
   end
 
+  get "/feeds/:feed_id/strips", to: "strips#show"
+
   root :to => "home#index"
 
   resources :messages#, only: [:create, :destroy]

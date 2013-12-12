@@ -6,18 +6,20 @@ class MessagesController < ApplicationController
     messages = Message.select([:sender_id, :recipient_id]).where("sender_id = ? OR recipient_id = ?", current_user_id, current_user_id)
 
     user_ids = messages.map {|message| [message.sender_id, message.recipient_id] }
-    user_ids.flatten!.uniq!
-    user_ids.delete(current_user_id)
-
+    unless user_ids.empty?
+      user_ids.flatten!.uniq!
+      user_ids.delete(current_user_id)
+    end
     @users = []
     user_ids.each do |user_id|
       @users << User.select(:username).find(user_id)
-    end
+     end
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @messages }
-    end
+  respond_to do |format|
+    format.html # index.html.erb
+    format.json { render json: @messages }
+  end
+
   end
 
   # GET /messages/1

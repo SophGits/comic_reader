@@ -4,6 +4,11 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
 
+# this is probably wrong*****************************
+    feed = Feed.find(params[:feed_id])
+    @strip = feed.strips.find(params[:strip_id])
+
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @comments }
@@ -24,7 +29,11 @@ class CommentsController < ApplicationController
   # GET /comments/new
   # GET /comments/new.json
   def new
-    @comment = Comment.new
+    # @comment = Comment.new
+
+    feed = Feed.find(params[:feed_id])
+    strip = feed.strips.find(params[:strip_id])
+    @comment = feed.strips.comments.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,17 +43,22 @@ class CommentsController < ApplicationController
 
   # GET /comments/1/edit
   def edit
+    @feed = Feed.find(params[:feed_id])
+    @strip = Strip.find(params[:strip_id])
     @comment = Comment.find(params[:id])
   end
 
   # POST /comments
   # POST /comments.json
   def create
-    @comment = Comment.new(params[:comment])
+
+    feed = Feed.find(params[:feed_id])
+    strip = feed.strips.find(params[:strip_id])
+    @comment = strip.comments.new(params[:comments])
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+        format.html { redirect_to [feed, strip], notice: 'Comment was successfully created.' }
         format.json { render json: @comment, status: :created, location: @comment }
       else
         format.html { render action: "new" }

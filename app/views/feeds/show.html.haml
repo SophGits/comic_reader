@@ -1,11 +1,13 @@
 %p#notice= notice
 
+%h1 FEEDS SHOW page
+/ =find_image(@feed.feed_url)
 %p
   %b Feed title:
   = @feed.title
 %p
   %b Feed logo:
-  = @feed.logo
+  =image_tag @feed.logo
 %p
   %b Main url:
   = @feed.main_url
@@ -34,3 +36,29 @@
 = link_to 'Edit', edit_feed_path(@feed)
 \|
 = link_to 'Back', feeds_path
+\|
+= link_to 'Add a strip to feed', new_feed_strip_path(@feed)
+\|
+%ul
+  - @feed.strips.each do |strip|
+    %li
+      Strip id:
+      = strip.id
+    %li
+      Strip url:
+      =image_tag (strip.strip_url)
+    %li
+
+    %li
+      Keywords:
+      = strip.keywords
+    %li
+      Up-votes:
+      = strip.up_vote_count
+    %li
+      Down-votes:
+      = strip.down_vote_count
+    %li
+      Created at:
+      = strip.created_at
+

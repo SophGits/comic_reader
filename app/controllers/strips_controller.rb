@@ -13,10 +13,10 @@ class StripsController < ApplicationController
   # GET /strips/1
   # GET /strips/1.json
   def show
+    @feed = Feed.find(params[:feed_id])
     @strip = Strip.find(params[:id])
 
-
-    # @comments = @strip.comments
+    @comments = @strip.comments
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,8 +27,8 @@ class StripsController < ApplicationController
   # GET /strips/new
   # GET /strips/new.json
   def new
-    @strip = Strip.new
-
+    @feed = Feed.find(params[:feed_id])
+    @strip = @feed.strips.new
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @strip }
@@ -43,11 +43,12 @@ class StripsController < ApplicationController
   # POST /strips
   # POST /strips.json
   def create
-    @strip = Strip.new(params[:strip])
+    feed = Feed.find(params[:feed_id])
+    strip = feed.strips.new(params[:strip])
 
     respond_to do |format|
-      if @strip.save
-        format.html { redirect_to @strip, notice: 'Strip was successfully created.' }
+      if strip.save
+        format.html { redirect_to [feed, strip], notice: 'Strip was successfully created.' }
         format.json { render json: @strip, status: :created, location: @strip }
       else
         format.html { render action: "new" }

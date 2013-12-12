@@ -1,5 +1,10 @@
 %p#notice= notice
 
+%h1 STRIPS SHOW PAGE
+
+%p
+  %strong Title:
+  = @strip.id
 %p
   %b Strip url:
   = @strip.strip_url
@@ -16,6 +21,18 @@
   %b Down vote count:
   = @strip.down_vote_count
 
-= link_to 'Edit', edit_strip_path(@strip)
-\|
-= link_to 'Back', strips_path
+= link_to 'Edit', edit_feed_strip_path(@feed, @strip)
+= link_to "Back to the #{@feed.title} feed", feed_path(@feed)
+
+= @strip.comments.size
+- @strip.comments.each do |comment|
+  %p= comment.content
+
+%h2 Add a comment:
+= form_for([@feed, @strip, @strip.comments.build]) do |f|
+  %p
+    = f.label :content
+    %br/
+    = f.text_area :content
+  %p
+    = f.submit

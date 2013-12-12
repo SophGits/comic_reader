@@ -16,10 +16,10 @@
       %td= comment.flag_count
       %td= comment.up_vote_count
       %td= comment.down_vote_count
-      %td= link_to 'Show', comment
-      %td= link_to 'Edit', edit_comment_path(comment)
-      %td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      %td= link_to 'Show', feed_strip_comments_path(comment)
+      %td= link_to 'Edit', edit_feed_strip_comment_path(@feed, @strip, comment)
+      / %td= link_to 'Destroy', comment, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Comment', new_comment_path
+/ = link_to 'New Comment', new_comment_path

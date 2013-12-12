@@ -61,4 +61,7 @@
     %li
       Created at:
       = strip.created_at
+    %li
+      Comments count (viewable on show page):
+      = link_to "#{strip.comments.count} comments", feed_strip_path(strip)
 

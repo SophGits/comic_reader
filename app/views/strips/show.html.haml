@@ -25,9 +25,12 @@
 = link_to "Back to the #{@feed.title} feed", feed_path(@feed)
 
 %h2 Comments
+There are
 = @strip.comments.size
+comments for this strip.
+%ul
 - @strip.comments.each do |comment|
-  %p= comment.content
+  %li= comment.content
   ="posted by #{comment.user_id}" #REALLY THIS NEEDS TO BE USERNAME
 
 %h2 Add a comment:

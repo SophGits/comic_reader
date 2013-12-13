@@ -62,5 +62,5 @@
         =image_tag (strip.strip_url)
       %li
         Comments count (viewable on show page):
-        = link_to pluralize(strip.comments.count, "comment"), feed_strip_path(strip)
+        = link_to pluralize(strip.comments.count, "comment"), feed_strip_path(@feed, strip)
 

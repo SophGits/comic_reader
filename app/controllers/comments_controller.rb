@@ -54,7 +54,7 @@ class CommentsController < ApplicationController
 
     feed = Feed.find(params[:feed_id])
     strip = feed.strips.find(params[:strip_id])
-    @comment = strip.comments.new(params[:comments])
+    @comment = strip.comments.new(params[:comment])
 
     respond_to do |format|
       if @comment.save

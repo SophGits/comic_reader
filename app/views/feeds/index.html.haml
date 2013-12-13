@@ -2,9 +2,10 @@
 
 %table
   %tr
+    %th Feed title
     %th Feed logo
     %th Main url
-    %th Feed url
+    / %th Feed url
     %th Keywords
     %th Summary
     %th Author
@@ -20,7 +21,7 @@
       %td.feed-title{"data-feed-id" => "#{feed.id}"}= feed.title
       %td= feed.logo
       %td= feed.main_url
-      %td= feed.feed_url
+      / %td= feed.feed_url
       %td= feed.keywords
       %td= feed.summary
       %td= feed.author

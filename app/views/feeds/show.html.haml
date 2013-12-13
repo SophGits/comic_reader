@@ -1,67 +1,66 @@
 %p#notice= notice
 
 %h1 FEEDS SHOW page
-/ =find_image(@feed.feed_url)
-%p
-  %b Feed title:
-  = @feed.title
-%p
-  %b Feed logo:
-  =image_tag @feed.logo
-%p
-  %b Main url:
-  = @feed.main_url
-%p
-  %b Feed url:
-  = @feed.feed_url
-%p
-  %b Keywords:
-  = @feed.keywords
-%p
-  %b Summary:
-  = @feed.summary
-%p
-  %b Author:
-  = @feed.author
-%p
-  %b Flag count:
-  = @feed.flag_count
-%p
-  %b Up vote count:
-  = @feed.up_vote_count
-%p
-  %b Down vote count:
-  = @feed.down_vote_count
-
-= link_to 'Edit', edit_feed_path(@feed)
-\|
-= link_to 'Back', feeds_path
-\|
-= link_to 'Add a strip to feed', new_feed_strip_path(@feed)
-\|
+%h2=@answer
 %ul
-  - @feed.strips.each do |strip|
-    %li
-      Strip id:
-      = strip.id
-    %li
-      Strip url:
-      =image_tag (strip.strip_url)
-    %li
+  %li
+    %b Feed title:
+    = @feed.title
+  %li
+    %b Feed logo:
+    =image_tag @feed.logo
+  %li
+    %b Main url:
+    = @feed.main_url
+  %li
+    %b Feed url:
+    = @feed.feed_url
+  %li
+    %b Keywords:
+    = @feed.keywords
+  %li
+    %b Summary:
+    = @feed.summary
+  %li
+    %b Author:
+    = @feed.author
+  %li
+    %b Flag count:
+    = @feed.flag_count
+  %li
+    %b Up vote count:
+    = @feed.up_vote_count
+  %li
+    %b Down vote count:
+    = @feed.down_vote_count
 
-    %li
-      Keywords:
-      = strip.keywords
-    %li
-      Up-votes:
-      = strip.up_vote_count
-    %li
-      Down-votes:
-      = strip.down_vote_count
-    %li
-      Created at:
-      = strip.created_at
-    %li
-      Comments count (viewable on show page):
-      = link_to "#{strip.comments.count} comments", feed_strip_path(strip)
+  = link_to 'Edit', edit_feed_path(@feed)
+  \|
+  = link_to 'Back', feeds_path
+  \|
+  = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
+  \|
+  %ul
+    - @feed.strips.each do |strip|
+      %li
+        Strip id:
+        = strip.id
+      %li
+        Keywords:
+        = strip.keywords
+      %li
+        Up-votes:
+        = strip.up_vote_count
+      %li
+        Down-votes:
+        = strip.down_vote_count
+      %li
+        Created at:
+        = strip.created_at
+      %li
+        Strip url:
+        =image_tag (strip.strip_url)
+      %li
+        Comments count (viewable on show page):
+        = link_to pluralize(strip.comments.count, "comment"), feed_strip_path(strip)
 

@@ -25,9 +25,7 @@
 = link_to "Back to the #{@feed.title} feed", feed_path(@feed)
 
 %h2 Comments
-There are
-= @strip.comments.size
-comments for this strip.
+= "There are " + pluralize(@strip.comments.count, "comment") + " for this strip."
 %ul
 - @strip.comments.each do |comment|
   %li= comment.content

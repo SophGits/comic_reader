@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(:version => 20131209112037) do
     t.integer  "flag_count"
     t.integer  "up_vote_count"
     t.integer  "down_vote_count"
+    t.string   "feed_type"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end

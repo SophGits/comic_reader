@@ -15,20 +15,6 @@ class FeedsController < ApplicationController
   def show
     @feed = Feed.find(params[:id])
 
-  #FINDING IMAGE FROM EXPLOSM RSS FEED ******
-      feed_url = @feed.feed_url
-      feed1 = Feedzirra::Feed.fetch_and_parse(feed_url)
-      page_url = feed1.entries.first.url
-      page_content = Nokogiri::HTML(open(page_url))
-      page_content.css("#maincontent div div img").each{ |img|
-        if /Comics/ =~ img.attribute("src").value
-          @answer = "this one !!!! -> #{img.attribute("src").value}"
-        else
-          @answer = ">> Comic strip finder not working yet. <<"
-        end
-        }
-  #END OF IMAGE-FINDING FUNCTION ***********
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @feed }

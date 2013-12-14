@@ -14,6 +14,16 @@ class Feed < ActiveRecord::Base
       parser.get_strips(self)
     elsif self.feed_type == "dilbert"
       parser = DilbertFeedParser.new
+      parser.get_strips(self)
+    elsif self.feed_type == "doghouse"
+      parser = DoghouseFeedParser.new
+      parser.get_strips(self)
+    elsif self.feed_type == "xkcd"
+      parser = XkcdFeedParser.new
+      parser.get_strips(self)
+    elsif self.feed_type == "dinosaur"
+      parser = DinosaurFeedParser.new
+      parser.get_strips(self)
     end
   end
 end

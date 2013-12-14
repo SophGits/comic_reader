@@ -6,15 +6,17 @@ module ParserHelper
 ######################### GET STRIPS (should be ANY TYPE) ######################
 
     def get_strips(feed)
-      rss_feed = Feedzirra::Feed.fetch_and_parse(feed.feed_url)
 
-      rss_feed.entries.each do |entry|
-        if feed == "dinosaur"
-          entry_url = entry.url
-        else
-          entry_url = entry.url
-        end
+      if feed.feed_type == "cat"
+        load_strip(feed)
+      elsif feed.feed_type == "vagrant"
+        preload_strip(feed)
+      else
+        rss_feed = Feedzirra::Feed.fetch_and_parse(feed.feed_url)
+        rss_feed.entries.each do |entry|
+        entry_url = entry.url
         load_strip(entry_url, feed)
+        end
       end
     end
 
@@ -175,7 +177,7 @@ module ParserHelper
   end
 
 
-############################# HARK! A VAGRANT ################ NOT WORKING (doesn't go to get_strips method)
+############################# HARK! A VAGRANT ################ NOT WORKING
 
   # class VagrantFeedParser < FeedParser
   #   def preload_strip(feed)
@@ -235,6 +237,95 @@ module ParserHelper
 
     end
   end
+
+############################# SIMON'S CAT ################ NOT WORKING ####
+
+
+  class CatFeedParser < FeedParser
+    def load_strip(feed)
+      page_content = Nokogiri::HTML(open(feed.feed_url))
+
+      page_content.css("article img").each do |img|
+        img_url = img.attribute("src").value
+
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
+        end
+      end
+
+    def get_old_strips(feed)
+      #
+    end
+
+    end
+############################# PBF COMICS ################
+
+
+  class PbfFeedParser < FeedParser
+    def load_strip(entry_url, feed)
+      page_content = Nokogiri::HTML(open(entry_url))
+
+      page_content.css("#topimg").each do |img|
+        url = img.attribute("src").value
+
+        if /archive_b/ =~ url
+          img_url = "http://pbfcomics.com" + url
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
+          break
+        end
+      end
+    end
+    ######## DOESN'T WORK YET ########################
+    def get_old_strips(feed)
+      (1..259).each do |index|
+        entry_url = "http://pbfcomics.com/" + index.to_s
+        load_strip(entry_url, feed)
+      end
+    end
+  end
+
+######################### OATMEAL ####################################
+  class OatmealFeedParser < FeedParser
+    def load_strip(entry_url, feed)
+      page_content = Nokogiri::HTML(open(entry_url))
+
+      page_content.css(".panel img").each do |img|
+        img_url = img.attribute("src").value
+
+        if /comics/ =~ img_url
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
+          break
+        end
+      end
+    end
+
+    ##### NOT SURE HOW TO OBTAIN ARCHIVED OATMEAL #######
+    def get_old_strips(feed)
+      #
+    end
+
+  end
+
+
+
+
+
+
+
+
+
+
 
 
 

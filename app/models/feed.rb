@@ -26,9 +26,18 @@ class Feed < ActiveRecord::Base
       parser.get_strips(self)
     # elsif self.feed_type == "vagrant"
     #   parser = VagrantFeedParser.new
-    #   parser.preload_strip(self)
+    #   parser.get_strips(self)
     elsif self.feed_type == "ctrl"
       parser = CtrlFeedParser.new
+      parser.get_strips(self)
+    elsif self.feed_type == "cat"
+      parser = CatFeedParser.new
+      parser.get_strips(self)
+    elsif self.feed_type == "pbf"
+      parser = PbfFeedParser.new
+      parser.get_strips(self)
+    elsif self.feed_type == "oatmeal"
+      parser = OatmealFeedParser.new
       parser.get_strips(self)
     end
   end

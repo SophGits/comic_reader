@@ -42,6 +42,9 @@ class Feed < ActiveRecord::Base
     elsif self.feed_type == "sarah"
       parser = SarahFeedParser.new
       parser.get_strips(self)
+    elsif self.feed_type == "twitter"
+      parser = TwitterFeedParser.new
+      parser.get_strips(self)
     end
   end
 end

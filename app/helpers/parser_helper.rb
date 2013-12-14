@@ -9,6 +9,8 @@ module ParserHelper
 
       if feed.feed_type == "cat"
         load_strip(feed)
+      elsif feed.feed_type == "sarah"
+        load_strip(feed)
       elsif feed.feed_type == "vagrant"
         preload_strip(feed)
       else
@@ -316,6 +318,29 @@ module ParserHelper
     end
 
   end
+
+
+######################### SARAH ANDERSON ####################################
+  class SarahFeedParser < FeedParser
+    def load_strip(feed)
+      page_content = Nokogiri::HTML(open(feed.feed_url))
+
+      page_content.css(".post img").each do |img|
+        img_url = img.attribute("src").value
+
+
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
+
+      end
+    end
+
+
+  end
+
 
 
 

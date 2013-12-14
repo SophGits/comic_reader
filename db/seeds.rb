@@ -72,3 +72,6 @@ pbf.save!
 
 oatmeal = Feed.create(title: "The Oatmeal", logo: "", main_url: "", feed_url: "http://feeds.feedburner.com/oatmealfeed", keywords: "blah blah blah", summary: "", author: "", feed_type: "oatmeal")
 oatmeal.save!
+
+sarah = Feed.create(title: "Sarah Anderson Comics", logo: "", main_url: "", feed_url: "http://sarahseeandersen.tumblr.com/", keywords: "blah blah blah", summary: "", author: "", feed_type: "sarah")
+sarah.save!

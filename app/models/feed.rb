@@ -39,6 +39,9 @@ class Feed < ActiveRecord::Base
     elsif self.feed_type == "oatmeal"
       parser = OatmealFeedParser.new
       parser.get_strips(self)
+    elsif self.feed_type == "sarah"
+      parser = SarahFeedParser.new
+      parser.get_strips(self)
     end
   end
 end

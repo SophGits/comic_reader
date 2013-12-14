@@ -55,3 +55,9 @@ dinosaur = Feed.create(title: "Dinosaur Comics", logo: "", main_url: "", feed_ur
 dinosaur.save!
 
 DinosaurFeedParser.new.get_old_strips(dinosaur)
+
+# vagrant = Feed.create(title: "Hark! A vagrant!", logo: "", main_url: "", feed_url: "http://www.harkavagrant.com/archive.php", keywords: "vagrants", summary: "", author: "", feed_type: "vagrant")
+# vagrant.save!
+
+ctrl = Feed.create(title: "CTRL ALT DEL", logo: "", main_url: "", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "It's CTRL_ALT_DEL, in't it....", summary: "", author: "", feed_type: "ctrl")
+ctrl.save!

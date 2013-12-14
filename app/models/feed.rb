@@ -24,6 +24,12 @@ class Feed < ActiveRecord::Base
     elsif self.feed_type == "dinosaur"
       parser = DinosaurFeedParser.new
       parser.get_strips(self)
+    # elsif self.feed_type == "vagrant"
+    #   parser = VagrantFeedParser.new
+    #   parser.preload_strip(self)
+    elsif self.feed_type == "ctrl"
+      parser = CtrlFeedParser.new
+      parser.get_strips(self)
     end
   end
 end

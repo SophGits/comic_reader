@@ -174,13 +174,71 @@ module ParserHelper
     end
   end
 
+
+############################# HARK! A VAGRANT ################ NOT WORKING (doesn't go to get_strips method)
+
+  # class VagrantFeedParser < FeedParser
+  #   def preload_strip(feed)
+  #     entry_url = feed.feed_url
+  #     archive_content = Nokogiri::HTML(open(entry_url))
+
+  #     archive_content.css("tr td a").each do |get_img_link|
+  #       url = get_img_link.attribute("href").value
+  #       page_url = "http://www.harkavagrant.com/" + url
+
+  #       load_strip(page_url, feed)
+  #     end
+  #   end
+
+  #   def load_strip(page_url, feed)
+  #     page_content = Nokogiri::HTML(open(page_url))
+
+  #       page_content.css("img").each do |img|
+  #         img_url = img.attribute("src").value
+
+  #         if /history/ =~ img_url
+  #           strip = Strip.new
+  #           strip.strip_url = img_url
+  #           strip.feed = feed
+  #           strip.save
+
+  #           break
+  #         end
+  #       end
+  #     end
+  #   end
+
+
+############################# CTRL ALT DEL ################
+
+
+  class CtrlFeedParser < FeedParser
+    def load_strip(entry_url, feed)
+      page_content = Nokogiri::HTML(open(entry_url))
+
+      page_content.css("img").each do |img|
+        img_url = img.attribute("src").value
+
+        if /comics/ =~ img_url
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
+          break
+        end
+      end
+
+    def get_old_strips(feed)
+      #done by date in url
+    end
+
+    end
+  end
+
+
+
 end
-
-
-
-
-
-
 
 
 

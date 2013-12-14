@@ -13,6 +13,8 @@ module ParserHelper
         load_strip(feed)
       elsif feed.feed_type == "twitter"
         load_strip(feed)
+      elsif feed.feed_type == "upandout"
+        load_strip(feed)
       elsif feed.feed_type == "vagrant"
         preload_strip(feed)
       else
@@ -355,7 +357,30 @@ module ParserHelper
     end
   end
 
+######################### Up AND OUT #################################### NOT WORKING
+  class UpandoutFeedParser < FeedParser
+    def load_strip(feed)
+      page_content = Nokogiri::HTML(open(feed.feed_url))
 
+      page_content.css(".photo img").each do |img|
+        img_url = img.attribute("src").value
+
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
+      end
+    end
+
+    ##### PAGES OF TUMBLR BLOG #######
+    def get_old_strips(feed)
+        (1..159).each do |index|
+        entry_url = "http://jeremykaye.tumblr.com/page/" + index.to_s
+        load_strip(feed)
+      end
+    end
+  end
 
 
 end

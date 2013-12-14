@@ -78,3 +78,8 @@ sarah.save!
 
 twitter = Feed.create(title: "Twitter the Comic", logo: "", main_url: "", feed_url: "http://twitterthecomic.tumblr.com/", keywords: "blah blah blah", summary: "", author: "", feed_type: "twitter")
 twitter.save!
+
+upandout = Feed.create(title: "Up and Out", logo: "", main_url: "", feed_url: "http://jeremykaye.tumblr.com/", keywords: "blah blah blah", summary: "", author: "Jeremy Kaye", feed_type: "upandout")
+upandout.save!
+
+UpandoutFeedParser.new.get_old_strips(upandout)

@@ -27,7 +27,7 @@ gem 'haml-rails'
 gem 'feedzirra'
 gem "nokogiri"
 
-gem 'textacular', '~> 3.0'
+gem 'textacular', "~> 3.0", require: 'textacular/rails'
 gem 'cancan'
 
 gem "fog", "~> 1.3.1"

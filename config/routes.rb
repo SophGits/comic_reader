@@ -26,5 +26,11 @@ ComicReader::Application.routes.draw do
 
   resources :subscriptions
 
+
+  resources :searches, only: [:create]
+
+
+
+
 end
 

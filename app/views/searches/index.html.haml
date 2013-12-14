@@ -1,0 +1,10 @@
+%h2 Search results
+%ul
+- @feeds.each do |feed|
+  %li
+    = link_to "#{feed.title}", feed_path(feed)
+    = feed.keywords
+    = feed.summary
+    = feed.author
+    = feed.feed_type
+

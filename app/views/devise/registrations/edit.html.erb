@@ -13,6 +13,14 @@
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
   <% end %>
 
+<p>
+  <div><%= f.label :avatar %><br />
+    Choose file:
+  <%= f.file_field :avatar %></div>
+  or link to image:
+  <%= f.url_field :avatar %></div>
+</p>
+
   <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 

@@ -31,7 +31,7 @@ gem 'textacular', "~> 3.0", require: 'textacular/rails'
 gem 'cancan'
 
 gem "fog", "~> 1.3.1"
-# gem 'rmagick'
+gem 'rmagick'
 gem 'carrierwave'
 
 gem 'devise'

@@ -8,10 +8,10 @@ Strip.destroy_all
 bob = User.create(username: "Bob", email: "bob@bob.com", role: "admin", password: "password", created_at: DateTime.now, avatar: "http://andromeda.star.bris.ac.uk/~mbt/treeview/icons/TREE_LOGO.gif")
 bob.save!
 
-shaniqua = User.create(username: "shaniqua", email: "shaniqua@shaniqua.com", role: "user", password: "password", created_at: DateTime.now, avatar:"")
+shaniqua = User.create(username: "shaniqua", email: "shaniqua@shaniqua.com", role: "user", password: "password", created_at: DateTime.now, avatar: "http://www.pensionstalk.co.uk/wp-content/uploads/2010/11/blue-butterfly.JPG")
 shaniqua.save!
 
-rita = User.create(username: "Rita", email: "rita@rita.com", role: "user", password: "password", created_at: DateTime.now, avatar:"")
+rita = User.create(username: "Rita", email: "rita@rita.com", role: "user", password: "password", created_at: DateTime.now, avatar: "http://www.mricons.com/store/png/836_1430_128_development_hammer_package_tool_icon.png")
 rita.save!
 
 #Bob messages Shaniqua
@@ -85,13 +85,13 @@ upandout.save!
 UpandoutFeedParser.new.get_old_strips(upandout)
 
 
-slim = Feed.create(title: "Slim Figures", logo: "", main_url: "", feed_url: "http://www.slimfigures.co.uk/", keywords: "blah blah blah", summary: "A scrapbook comic of science, satire and dark thoughts.", author: "David Beet", feed_type: "slim")
-slim.save!
+# slim = Feed.create(title: "Slim Figures", logo: "", main_url: "", feed_url: "http://www.slimfigures.co.uk/", keywords: "blah blah blah", summary: "A scrapbook comic of science, satire and dark thoughts.", author: "David Beet", feed_type: "slim")
+# slim.save!
 
-SlimFeedParser.new.get_old_strips(slim)
+# SlimFeedParser.new.get_old_strips(slim)
 
 
-jet = Feed.create(title: "You're all just jealous of my jetpack", logo: "", main_url: "", feed_url: "http://myjetpack.tumblr.com/rss", keywords: "blah blah blah", summary: "", author: "Tom Gauld", feed_type: "jet")
-jet.save!
+# jet = Feed.create(title: "You're all just jealous of my jetpack", logo: "", main_url: "", feed_url: "http://myjetpack.tumblr.com/rss", keywords: "blah blah blah", summary: "", author: "Tom Gauld", feed_type: "jet")
+# jet.save!
 
 # JetFeedParser.new.get_old_strips(jet)

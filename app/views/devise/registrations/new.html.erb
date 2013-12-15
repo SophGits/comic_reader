@@ -8,7 +8,13 @@
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div> <!-- GIVE CHOICE OF 'MY EMAIL IS MY USERNAME' -->
-
+<p>
+  <div><%= f.label :avatar %><br />
+    Choose file:
+  <%= f.file_field :avatar %></div>
+  or link to image:
+  <%= f.url_field :avatar %></div>
+</p>
   <div><%= f.label :password %><br />
   <%= f.password_field :password %></div>
 

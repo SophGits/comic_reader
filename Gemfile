@@ -38,7 +38,7 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 # gem 'omniauth-facebook'
-# gem ‘omniauth_twitter’
+gem 'omniauth-twitter'
 
 group :development, :test do
   gem 'pry-rails'

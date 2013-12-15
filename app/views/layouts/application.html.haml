@@ -30,6 +30,8 @@
           = link_to 'Sign in', new_user_session_path
           \|
           = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+          \|
+          = link_to "Sign in with Twitter...not yet!"
 
 
       - flash.each do |name, msg|

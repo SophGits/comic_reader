@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20131214232156) do
     t.string   "username"
     t.string   "role"
     t.string   "avatar"
+    t.string   "remote_avatar_url"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.string   "provider"

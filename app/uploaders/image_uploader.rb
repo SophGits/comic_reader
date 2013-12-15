@@ -23,11 +23,24 @@ class ImageUploader < CarrierWave::Uploader::Base
 
 
   version :thumb do
-    process :resize_to_fit => [60, 60]
+    process :resize_to_fit => [100, 100]
   end
 
   version :profile do
     process :resize_to_fit => [300, 300]
+  end
+
+    version :preview do
+    process :do_stuff #=>  for sketch: [0.0, 1.0, 0.8]
+    process :resize_to_fit => [400, 400]
+  end
+
+  def do_stuff#(x, y, z)
+    manipulate! do |img|
+      img = img.auto_orient
+      #img = img.sketch (x, y, z)
+      # img = img.polaroid(angle)
+    end
   end
 
   # Process files as they are uploaded:

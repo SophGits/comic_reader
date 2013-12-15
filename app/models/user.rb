@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :subscriptions
   has_many :feeds, through: :subscriptions
 
-  attr_accessible :username, :role, :created_at, :avatar
+  attr_accessible :username, :role, :created_at, :avatar, :remote_avatar_url
   mount_uploader :avatar, ImageUploader
 
    def self.from_omniauth(auth)

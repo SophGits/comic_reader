@@ -33,6 +33,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string    :username
       t.string    :role
       t.string    :avatar
+      t.string    :remote_avatar_url
 
       t.timestamps
     end

@@ -83,3 +83,15 @@ upandout = Feed.create(title: "Up and Out", logo: "", main_url: "", feed_url: "h
 upandout.save!
 
 UpandoutFeedParser.new.get_old_strips(upandout)
+
+
+slim = Feed.create(title: "Slim Figures", logo: "", main_url: "", feed_url: "http://www.slimfigures.co.uk/", keywords: "blah blah blah", summary: "A scrapbook comic of science, satire and dark thoughts.", author: "David Beet", feed_type: "slim")
+slim.save!
+
+SlimFeedParser.new.get_old_strips(slim)
+
+
+jet = Feed.create(title: "You're all just jealous of my jetpack", logo: "", main_url: "", feed_url: "http://myjetpack.tumblr.com/rss", keywords: "blah blah blah", summary: "", author: "Tom Gauld", feed_type: "jet")
+jet.save!
+
+# JetFeedParser.new.get_old_strips(jet)

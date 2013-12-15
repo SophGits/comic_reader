@@ -1,7 +1,7 @@
 ComicReader::Application.routes.draw do
 
   devise_for  :users,
-              :controllers => {:registrations => 'users'}
+              :controllers => {:registrations => 'users', omniauth_callbacks: "omniauth_callbacks" }
 
   devise_scope :user do
     # get "/users/show/:id" => "users#show"

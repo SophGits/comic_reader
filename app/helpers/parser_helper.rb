@@ -17,6 +17,8 @@ module ParserHelper
         load_strip(feed)
       elsif feed.feed_type == "vagrant"
         preload_strip(feed)
+      elsif feed.feed_type == "slim"
+        get_old_strips(feed)
       else
         rss_feed = Feedzirra::Feed.fetch_and_parse(feed.feed_url)
         rss_feed.entries.each do |entry|
@@ -378,6 +380,33 @@ module ParserHelper
         (1..159).each do |index|
         entry_url = "http://jeremykaye.tumblr.com/page/" + index.to_s
         load_strip(feed)
+      end
+    end
+  end
+
+######################### SLIM FIGURES ####################################
+  class SlimFeedParser < FeedParser
+    def get_old_strips(feed)
+      (1..300).each do |index|
+        entry_url = "http://www.slimfigures.co.uk/archive/comic" + index.to_s + ".php"
+        load_strip(feed)
+      end
+    end
+  end
+
+######################### YOU'RE ALL JUST JEALOUS OF MY JETPACK #################################
+  class JetFeedParser < FeedParser
+    def load_strip(feed)
+      page_content = Nokogiri::HTML(open(feed.feed_url))
+
+      page_content.css("article div img").each do |img|
+        img_url = img.attribute("src").value
+
+          strip = Strip.new
+          strip.strip_url = img_url
+          strip.feed = feed
+          strip.save
+
       end
     end
   end

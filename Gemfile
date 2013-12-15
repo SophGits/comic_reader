@@ -36,7 +36,7 @@ gem 'carrierwave'
 
 gem 'devise'
 gem 'omniauth'
-# gem 'omniauth-google-oauth2'
+gem 'omniauth-google-oauth2'
 # gem 'omniauth-facebook'
 # gem ‘omniauth_twitter’
 

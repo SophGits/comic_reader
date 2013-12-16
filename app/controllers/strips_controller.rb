@@ -89,4 +89,17 @@ class StripsController < ApplicationController
   def random
     render json: Strip.where(feed_id: params[:feed_id]).first(order: "RANDOM()")
   end
+
+  def vote_up
+    @strip = Strip.find params[:id]
+    @strip.liked_by current_user
+    redirect_to @strip
+  end
+
+  def vote_down
+    @strip = Strip.find params[:id]
+    current_user.vote_against(@strip)
+    redirect_to @strip
+  end
+
 end

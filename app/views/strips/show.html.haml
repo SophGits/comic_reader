@@ -18,6 +18,8 @@
   %b Up vote count:
   = @strip.up_vote_count
 %p
+  = link_to 'UPVOTE', feed_strip_vote_up_path, :method => :post
+%p
   %b Down vote count:
   = @strip.down_vote_count
 

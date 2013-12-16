@@ -13,8 +13,12 @@ ComicReader::Application.routes.draw do
 
   resources :feeds do
     resources :strips do
+      post :vote_up
+      post :vote_down
       resources :comments
     end
+
+
 
     resources :subscriptions
     delete "/subscriptions", to: "subscriptions#unsubscribe"

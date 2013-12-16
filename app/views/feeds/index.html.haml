@@ -4,7 +4,7 @@
   %tr
     %th Feed title
     %th Feed logo
-    %th Main url
+    / %th Main url
     / %th Feed url
     %th Keywords
     %th Summary
@@ -18,9 +18,9 @@
 
   - @feeds.each do |feed|
     %tr
-      %td.feed-title{"data-feed-id" => "#{feed.id}"}= feed.title
-      %td= feed.logo
-      %td= feed.main_url
+      %td.comic.feed-title{"data-feed-id" => "#{feed.id}"}= feed.title
+      %td= image_tag feed.logo
+      / %td= feed.main_url
       / %td= feed.feed_url
       %td= feed.keywords
       %td= feed.summary

@@ -1,4 +1,7 @@
 %h1 (back to the) Drawing board
-%h3 Where a user can see their feeds and messages.
+%h4 Where a user can see their feeds and messages.
 
-%h4 Link to messages
+%h3='All subscriptions'
+%h3.right=link_to 'Inbox (messages list)', messages_path
+/ =render "messages/conversation"
+%h3.right='Tweets'

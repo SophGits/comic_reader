@@ -117,8 +117,6 @@ class MessagesController < ApplicationController
     user_2 = User.select([:id, :username, :avatar]).where(username: params[:username]).first
     user_2_id = user_2.id
     user_2_username = user_2.username
-    user_2 = User.select([:id, :avatar]).where(avatar: params[:avatar]).first
-    user_2_avatar = user_2.avatar
 
     @messages = Message.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)", user_1_id, user_2_id, user_2_id, user_1_id)
 
@@ -126,11 +124,9 @@ class MessagesController < ApplicationController
       if message.sender_id == user_1_id
         message.sender_username = user_1_username
         message.recipient_username = user_2_username
-        message.sender_avatar = user_1_avatar
       else
         message.sender_username = user_2_username
         message.recipient_username = user_1_username
-        message.recipient_avatar = user_2_avatar
       end
     end
   end

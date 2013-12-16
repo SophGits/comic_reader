@@ -1,0 +1,196 @@
+// VARIABLES AND MIXINS
+
+$family    : 'Cabin Sketch', cursive;
+$primary   : #00D6DD;
+$secondary : #D4FF00;
+$grey_dark : #303233;
+$grey_mid  : #66757F;
+$grey_light: #ABC4CA;
+$yellow    : #ffff33;
+
+/* This is telling the browser to calculate everything from the border inwards; not the content outwards. Previously, adding padding would increase the width & height of your containers by the amount of padding and break your layout */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 1.1em;
+  background-color: #dde;
+}
+
+
+  h1 {
+    font-family: $family;
+    font-size: 2.8em;
+    }
+  h2 {
+    font-family: $family;
+    font-size: 2.2em;
+  }
+  h3 {
+    font-family: $family;
+    font-size: 1.8em;
+  }
+  h4 {
+    font-family: $family;
+    font-size: 1.4em;
+  }
+  a {
+    font-size: 1.1em;
+  }
+  .comic {
+    font-family: $family;
+    font-size: 1.5em;
+  }
+div {
+  border: 1px dashed gray;
+}
+
+/**********
+* LAYOUT *
+**********/
+
+// .main {
+// width: 800px;
+// height: 99%;
+
+// }
+
+.right {
+  text-align: right;
+}
+nav.nav_top {
+  position: fixed;
+  background: red;
+  width: 100%;
+  height: 3em;
+  top: 0.5em;
+  padding: 1em 1.5em;
+  // margin-left: 20%;
+}
+
+nav.nav_top ul {
+  background-color: pink;
+  list-style-type: none;
+  display: inline-block;
+  line-height: 2em;
+  width: auto;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  }
+
+nav.nav_top ul li {
+  display: inline;
+  line-height: 1.2em;
+  padding: 2px;
+  margin: 0.5em;
+  border: 1pz solid #000;
+  background-color: #096;
+  // text-align: center;
+  color: yellow;
+    }
+
+
+.nav_left {
+  background: #ffee66;
+  float: left;
+  height: 70%;
+  width: 16em;
+  left: 1em;
+  top: 7em;
+  position: fixed;
+  padding: 0.625rem;
+  font-size: 0.75em;
+  overflow: scroll;
+}
+.nav_right {
+  background: #ff99cc;
+  float: right;
+  min-height: 30em;
+  width: 15em;
+  position: fixed;
+  padding: 0.625rem;
+  font-size: 0.75em;
+  top: 7em;
+  right: 1em;
+  overflow: scroll;
+}
+
+.container {
+  position: absolute;
+  top: 5.5em;
+  bottom: 3em;
+  left: 15em;
+  right: 14em;
+  border: black dashed 2px;
+  background: blue;
+  // max-width: 1300px;
+  // min-width: 600px;
+  // height: 600px;
+  overflow: auto;
+}
+
+.content {
+  background: white;
+  padding: 0.625em;
+  height: 20em;
+  width: 40em;
+  margin: auto;
+}
+.content div.btn-left a{
+  float: left;
+  left: -3em;
+  top: 5em;
+  position: relative;
+  text-decoration: none;
+  font-size: 2em;
+  color: cyan;
+}
+.content div.btn-right a{
+  float: right;
+  right: -3em;
+  top: 5em;
+  position: relative;
+  text-decoration: none;
+  font-size: 2em;
+  color: cyan;
+}
+
+footer {
+  clear: both;
+  position: fixed;
+  bottom: 0.5em;
+  left: 2em;
+  height: 2em;
+  width: 90%;
+  background-color: #def345;
+  border: 1px solid gray;
+}
+
+/*This is cool, using pseudo element: */
+/*.container:before {
+  content: 'rofl';
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: green;
+}*/
+
+/*a:hover,
+a:focus {
+  color: pink;  see how when you tab onto a link it goes this color
+}*/
+
+
+/**********
+* HACKS *
+**********/
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+ }

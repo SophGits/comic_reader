@@ -22,8 +22,7 @@ ComicReader::Application.routes.draw do
   root :to => "home#index"
 
   resources :messages#, only: [:create, :destroy]
-  get '/messages/user/:username', :to => "messages#conversation"
-
+  get '/messages/user/:username', :to => "messages#conversation"#, :as => "conversation"
   resources :subscriptions
 
 

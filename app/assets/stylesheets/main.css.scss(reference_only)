@@ -1,0 +1,323 @@
+/***********
+variables and mixins
+************/
+$nav_width: 5em;
+$color1: #000066;
+$color2: #0066cc;
+
+
+/********
+* BODY *
+********/
+
+/* This is telling the browser to calculate everything from the border inwards; not the content outwards. Previously, adding padding would increase the width & height of your containers by the amount of padding and break your layout */
+*, *:before, *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  background: #6000ff;
+}
+
+/**********
+* LAYOUT *
+**********/
+
+// .main {
+// width: 800px;
+// height: 99%;
+
+// }
+
+nav.nav_top {
+  position: fixed;
+  background: red;
+  width: 100%;
+  height: 3em;
+  top: 0.5em;
+  padding: 1em 1.5em;
+  // margin-left: 20%;
+}
+
+nav.nav_top ul {
+  background-color: pink;
+  list-style-type: none;
+  display: inline-block;
+  line-height: 2em;
+  width: auto;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  }
+
+nav.nav_top ul li {
+  display: inline;
+  line-height: 1.2em;
+  padding: 2px;
+  margin: 0.5em;
+  border: 1pz solid #000;
+  background-color: #096;
+  // text-align: center;
+  color: yellow;
+    }
+
+
+.nav_left {
+  background: #ffee66;
+  float: left;
+  height: 70%;
+  width: 16em;
+  left: 1em;
+  top: 7em;
+  position: fixed;
+  padding: 0.625rem;
+  font-size: 0.75em;
+  overflow: scroll;
+}
+.nav_right {
+  background: #ff99cc;
+  float: right;
+  min-height: 30em;
+  width: 15em;
+  position: fixed;
+  padding: 0.625rem;
+  font-size: 0.75em;
+  top: 7em;
+  right: 1em;
+  overflow: scroll;
+}
+
+.container {
+  position: absolute;
+  top: 5.5em;
+  bottom: 3em;
+  left: 15em;
+  right: 14em;
+  border: black dashed 2px;
+  background: blue;
+  // max-width: 1300px;
+  // min-width: 600px;
+  // height: 600px;
+  overflow: auto;
+}
+
+.content {
+  background: white;
+  padding: 0.625em;
+  height: 20em;
+  width: 40em;
+  margin: auto;
+}
+.content div.btn-left a{
+  float: left;
+  left: -3em;
+  top: 5em;
+  position: relative;
+  text-decoration: none;
+  font-size: 2em;
+  color: cyan;
+}
+.content div.btn-right a{
+  float: right;
+  right: -3em;
+  top: 5em;
+  position: relative;
+  text-decoration: none;
+  font-size: 2em;
+  color: cyan;
+}
+
+footer {
+  clear: both;
+  position: fixed;
+  bottom: 0.5em;
+  left: 2em;
+  height: 2em;
+  width: 90%;
+  background-color: #def345;
+  border: 1px solid gray;
+}
+
+/*This is cool, using pseudo element: */
+/*.container:before {
+  content: 'rofl';
+  display: block;
+  width: 50px;
+  height: 50px;
+  background: green;
+}*/
+
+/*a:hover,
+a:focus {
+  color: pink;  see how when you tab onto a link it goes this color
+}*/
+
+
+/**********
+* HACKS *
+**********/
+.cf:before,
+.cf:after {
+  content: " ";
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+ }
+
+/***************
+* MEDIA QUERIES *
+****************/
+
+
+ /* Desktops and laptops ----------- */
+@media only screen and (max-width : 700px) {
+  body {
+    background: purple; /* now the background will change colour when your resize the browser) */
+  }
+  .navbar {
+    background: red;
+    padding: 0.625rem;
+    font-size: 0.75em;
+  }
+
+  .content {
+    background: white;
+    padding: 0.625em;
+    }
+}
+
+/* for mobile */
+/* remember to change max-width to max-device-width */
+@media only screen and (min-width : 320px)
+and (max-width : 480px)
+and (orientation : portrait) {
+    body {
+    background: blue;
+    }
+    .nav_left{
+      display: none;
+    }
+    .nav_right {
+      display: none;
+    }
+    .container {
+  position: absolute;
+  top: 5.5em;
+  bottom: 3em;
+  left: 1em;
+  right: 1em;
+  border: black dashed 2px;
+  background: blue;
+  // max-width: 1300px;
+  // min-width: 600px;
+  // height: 600px;
+  overflow: auto;
+}
+  }
+
+/*everything not in a media query -----*/
+
+.cool {
+  list-style: none;
+}
+.cool li:before{
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1em;
+  background: black;
+}
+
+
+// <!DOCTYPE html>
+// <html class="no-js">
+//   <head>
+//     <meta charset="utf-8">
+//     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+//     <title>My awesome website!</title>
+//     <meta name="description" content="My cool website!">
+//     <meta name="viewport" content="width=device-width">
+
+//     <link rel="stylesheet" href="css/normalize.css">
+//     <link rel="stylesheet" href="css/main.css.scss">
+
+//     <script src="js/vendor/modernizr.js"></script>
+
+//     <!--[if lt IE 9]>
+//     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+//     <script>window.html5 || document.write('<script src="js/vendor/html5shiv.js"><\/script>')</script>
+//     <![endif]-->
+//   </head>
+//   <body>
+
+// <div class="main">
+
+//     <nav class="nav_top">
+//       <ul>
+//         <li>
+//           This is my top navigation.
+//         </li>
+//         <li>
+//           Button 2
+//         </li>
+//         <li>
+//           Button 3
+//         </li>
+//       </ul>
+//     </nav>
+
+//     <aside class="nav_left">
+//       <p>This is my left navigation.</p>
+//       <p>Buttons.</p>
+//       <p>Buttons.</p>
+//       <p>Buttons.</p>
+//       <p>Buttons.</p>
+//       <p>Buttons.</p>
+//       <p>Cats</p>
+//     </aside>
+
+//     <aside class="nav_right">
+//       <p>This is my right navigation.</p>
+//     </aside>
+
+//   <section class="container cf">
+
+//     <section class="content">
+//       <div class="btn-left">
+//         <a href = "left">Left</a>
+//       </div>
+//       <div class="btn-right">
+//         <a href = "right">Right</a>
+//       </div>
+
+//     </section>
+
+//     <aside>
+//       <p>Hello world! This is HTML5 Boilerplate.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <p>Words.</p>
+//       <a href="http://www.google.com">Google</a>
+//     </aside>
+
+//   </section> <!-- // .container -->
+
+//   <footer>
+//     <p>Footer</p>
+//   </footer>
+
+// </div>
+
+//   <script src="js/main.js" async></script>
+//   </body>
+// </html>

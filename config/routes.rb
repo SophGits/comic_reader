@@ -29,6 +29,7 @@ ComicReader::Application.routes.draw do
 
 
   resources :searches, only: [:create]
+  resources :slideshow
 
 end
 

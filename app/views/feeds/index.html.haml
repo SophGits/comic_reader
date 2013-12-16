@@ -18,7 +18,7 @@
 
   - @feeds.each do |feed|
     %tr
-      %td.comic.feed-title{"data-feed-id" => "#{feed.id}"}= feed.title
+      %td.comic.feed-title{"data-feed-id" => "c"}= feed.title
       %td= image_tag feed.logo
       / %td= feed.main_url
       / %td= feed.feed_url
@@ -28,6 +28,7 @@
       %td= feed.flag_count
       %td= feed.up_vote_count
       %td= feed.down_vote_count
+      %td= link_to 'Subscribe', "/feeds/#{feed.id}/subscriptions", method: :post
       %td= link_to 'Show', feed
       %td= link_to 'Edit', edit_feed_path(feed)
       %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }

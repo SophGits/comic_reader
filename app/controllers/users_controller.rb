@@ -24,7 +24,6 @@ class UsersController < Devise::RegistrationsController
   end
 
   def drawing_board
-    # @feeds = current_user.feeds
     @user = current_user
   end
 

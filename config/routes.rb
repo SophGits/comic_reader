@@ -15,6 +15,8 @@ ComicReader::Application.routes.draw do
     resources :strips do
       resources :comments
     end
+
+    resources :subscriptions
   end
 
   get "/feeds/:feed_id/strips", to: "strips#show"
@@ -23,7 +25,6 @@ ComicReader::Application.routes.draw do
 
   resources :messages#, only: [:create, :destroy]
   get '/messages/user/:username', :to => "messages#conversation"#, :as => "conversation"
-  resources :subscriptions
 
 
   resources :searches, only: [:create]

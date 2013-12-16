@@ -24,7 +24,7 @@
           \|
           =link_to 'inbox (messages list)', messages_path
           \|
-          = image_tag (current_user.avatar.profile)
+          = image_tag (current_user.avatar.thumb)
         - else
           = link_to 'Sign up', new_user_registration_path
           \|

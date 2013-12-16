@@ -40,6 +40,8 @@ gem 'omniauth-google-oauth2'
 # gem 'omniauth-facebook'
 gem 'omniauth-twitter'
 
+gem 'acts_as_votable', '~> 0.8.0'
+
 group :development, :test do
   gem 'pry-rails'
   # gem 'better_errors'

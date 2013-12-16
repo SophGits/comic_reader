@@ -11,7 +11,7 @@
     = f.select :recipient_id, options_from_collection_for_select(@other_users, 'id', 'username')
   .field
     = f.label :content
-    = f.text_area :content
+    = f.text_area :content, {required: :required}
   / .field
   /   = f.label :is_read
   /   = f.check_box :is_read

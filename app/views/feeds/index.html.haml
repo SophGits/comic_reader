@@ -15,6 +15,8 @@
     %th
     %th
     %th
+    %th
+    %th
 
   - @feeds.each do |feed|
     %tr
@@ -28,7 +30,10 @@
       %td= feed.flag_count
       %td= feed.up_vote_count
       %td= feed.down_vote_count
-      %td= link_to 'Subscribe', "/feeds/#{feed.id}/subscriptions", method: :post
+      - if Subscription.is_subscribed?(current_user.id, feed.id)
+        %td= link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+      - else
+        %td= link_to 'Subscribe', "/feeds/#{feed.id}/subscriptions", method: :post
       %td= link_to 'Show', feed
       %td= link_to 'Edit', edit_feed_path(feed)
       %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }

@@ -25,6 +25,7 @@ class UsersController < Devise::RegistrationsController
 
   def drawing_board
     @user = current_user
+    @feeds = @user.feeds.where("subscriptions.active = 't'")
   end
 
 end

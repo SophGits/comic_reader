@@ -63,8 +63,9 @@ ActiveRecord::Schema.define(:version => 20131214232156) do
   create_table "subscriptions", :force => true do |t|
     t.integer  "feed_id"
     t.integer  "user_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "active",     :default => true
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "users", :force => true do |t|

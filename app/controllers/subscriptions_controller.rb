@@ -40,10 +40,14 @@ class SubscriptionsController < ApplicationController
   # POST /subscriptions
   # POST /subscriptions.json
   def create
-    subscription = Subscription.new
-    subscription.user = current_user
-    subscription.feed = Feed.find(params[:feed_id])
-    subscription.save
+    subscription = Subscription.where(user_id: current_user.id, feed_id: params[:feed_id], active: true).first
+
+    if subscription.nil?
+      subscription = Subscription.new
+      subscription.user = current_user
+      subscription.feed = Feed.find(params[:feed_id])
+      subscription.save
+    end
 
     redirect_to :feeds
   end
@@ -74,5 +78,16 @@ class SubscriptionsController < ApplicationController
       format.html { redirect_to subscriptions_url }
       format.json { head :no_content }
     end
+  end
+
+  def unsubscribe
+    subscription = Subscription.where(user_id: current_user.id, feed_id: params[:feed_id], active: true).first
+
+    if not subscription.nil?
+      subscription.active = false
+      subscription.save
+    end
+
+    redirect_to :feeds
   end
 end

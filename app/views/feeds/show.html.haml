@@ -2,6 +2,14 @@
 
 %h1 FEEDS SHOW page
 %h2=@answer
+
+%p
+  - if Subscription.is_subscribed?(current_user.id, @feed.id)
+    = link_to 'Unsubscribe', "/feeds/#{@feed.id}/subscriptions", method: :delete
+  - else
+    = link_to 'Subscribe', "/feeds/#{@feed.id}/subscriptions", method: :post
+
+
 %ul
   %li
     %b Feed title:

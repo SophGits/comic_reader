@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :subscriptions
   has_many :feeds, through: :subscriptions
+  has_many :notifications
+  has_many :strips, through: :notifications
 
   attr_accessible :username, :role, :created_at, :avatar, :remote_avatar_url
   mount_uploader :avatar, ImageUploader

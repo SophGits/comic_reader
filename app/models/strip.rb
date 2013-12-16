@@ -3,6 +3,8 @@ class Strip < ActiveRecord::Base
 
   belongs_to :feed
   has_many :comments
+  has_many :notifications
+  has_many :users, through: :notifications
 
   # accepts_nested_attributes_for :comments
 

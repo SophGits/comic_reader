@@ -4,6 +4,10 @@
 %h3='All subscriptions'
 - @feeds.each do |feed|
   = feed.title
+
+
+  = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+
   %br
 
 %h3.right=link_to 'Inbox (messages list)', messages_path

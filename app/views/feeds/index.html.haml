@@ -20,7 +20,7 @@
 
   - @feeds.each do |feed|
     %tr
-      %td.comic.feed-title{"data-feed-id" => "c"}= feed.title
+      %td.comic.feed-title{"data-feed-id" => "c"}= link_to "#{feed.title}", feed
       %td= image_tag feed.logo
       / %td= feed.main_url
       / %td= feed.feed_url
@@ -30,11 +30,11 @@
       %td= feed.flag_count
       %td= feed.up_vote_count
       %td= feed.down_vote_count
-      - if Subscription.is_subscribed?(current_user.id, feed.id)
-        %td= link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
-      - else
-        %td= link_to 'Subscribe', "/feeds/#{feed.id}/subscriptions", method: :post
-      %td= link_to 'Show', feed
+      / - if Subscription.is_subscribed?(current_user.id, feed.id)
+      /   %td= link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+      / - else
+      /   %td= link_to 'Subscribe', "/feeds/#{feed.id}/subscriptions", method: :post
+      / %td= link_to 'Show', feed
       %td= link_to 'Edit', edit_feed_path(feed)
       %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
 

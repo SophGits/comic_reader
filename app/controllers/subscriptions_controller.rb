@@ -49,7 +49,7 @@ class SubscriptionsController < ApplicationController
       subscription.save
     end
 
-    redirect_to :feeds
+    redirect_to :drawing_board
   end
 
   # PUT /subscriptions/1
@@ -88,6 +88,6 @@ class SubscriptionsController < ApplicationController
       subscription.save
     end
 
-    redirect_to :feeds
+    redirect_to :drawing_board
   end
 end

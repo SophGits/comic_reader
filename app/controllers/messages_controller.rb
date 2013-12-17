@@ -114,7 +114,7 @@ class MessagesController < ApplicationController
     user_1_username = current_user.username
     user_1_avatar = current_user.avatar
 
-    user_2 = User.select([:id, :username, :avatar]).where(username: params[:username]).first
+    user_2 = User.select([:id, :username]).where(username: params[:username]).first
     user_2_id = user_2.id
     user_2_username = user_2.username
 

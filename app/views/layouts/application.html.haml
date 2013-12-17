@@ -7,41 +7,38 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body
-    #container
-      .user-nav
+    .nav.nav-top
+      %ul
         - if user_signed_in?
-          Logged in as
-          %b= current_user.email
-          = link_to 'Home', "/"
+          %li= link_to 'Home', "/"
           \|
-          = link_to 'Edit Profile', edit_user_registration_path
+          %li= link_to 'Edit Profile', edit_user_registration_path
           \|
-          = link_to 'Logout',  destroy_user_session_path, method: :delete
+          %li=link_to 'Drawing Board', drawing_board_path
           \|
-          =link_to 'Drawing Board', drawing_board_path
+          %li=link_to 'All feeds', feeds_path
           \|
-          =link_to 'All feeds', feeds_path
+          %li=link_to 'inbox (messages list)', messages_path
           \|
-          =link_to 'inbox (messages list)', messages_path
+          %li="Logged in as #{current_user.email}"
           \|
-          = image_tag (current_user.avatar.thumb)
+          %li= link_to 'Logout',  destroy_user_session_path, method: :delete
+          \|
+          %li= image_tag (current_user.avatar.thumb)
         - else
-          = link_to 'Sign up', new_user_registration_path
+          %li= link_to 'Sign up', new_user_registration_path
           \|
-          = link_to 'Sign in', new_user_session_path
+          %li= link_to 'Sign in', new_user_session_path
           \|
-          = link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+          %li= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
           \|
-          = link_to "Sign in with Twitter...not yet!"
-
+          %li= link_to "Sign in with Twitter...not yet!"
+        = form_tag searches_path do
+          / = label_tag :strip_search
+          = text_field_tag :query
+          = submit_tag 'Strip search'
 
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"
-
-    %br
-    = form_tag searches_path do
-      = label_tag :search
-      = text_field_tag :query
-      = submit_tag 'search'
 
     \#{yield}

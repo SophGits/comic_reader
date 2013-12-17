@@ -1,15 +1,16 @@
-%h1 (back to the) Drawing board
+%h1.title (back to the) Drawing board
 %h4 Where a user can see their feeds and messages.
 
-%h3='All subscriptions'
-- @feeds.each do |feed|
-  = feed.title
-
-
-  = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
-
+.nav-left
+  %h3='All subscriptions'
+  %ul
+    - @feeds.each do |feed|
+      %li= feed.title
+      = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+.container
+  %h1 Some image
   %br
-
-%h3.right=link_to 'Inbox (messages list)', messages_path
-/ =render "messages/conversation"
-%h3.right='Tweets'
+.nav-right
+  %h3=link_to 'Inbox (messages list)', messages_path
+  / =render "messages/conversation"
+  %h3='Tweets'

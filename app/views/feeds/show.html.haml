@@ -47,27 +47,62 @@
   \|
   = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
   \|
-  - if @strip
-    %ul
-      %li
-        Strip id:
-        = @strip.id
-      %li
-        Keywords:
-        = @strip.keywords
-      %li
-        Up-votes:
-        = @strip.up_vote_count
-      %li
-        Down-votes:
-        = @strip.down_vote_count
-      %li
-        Created at:
-        = @strip.created_at
-      %li
-        Strip url:
-        =image_tag (@strip.strip_url)
-      %li
-        Comments count (viewable on show page):
-        = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
+  #strip
+    .keywords
+      Keywords:
+      / = @strip.keywords
+    .up-votes
+      Up-votes:
+      / = @strip.up_vote_count
+    .down-votes
+      Down-votes:
+      / = @strip.down_vote_count
+    .created-at
+      Created at:
+      / = @strip.created_at
+    .image
+      / =image_tag (@strip.strip_url)
+    .comments-count
+      Comments count (viewable on show page):
+      / = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
+    .links
+      %a.previous Previous
+      %a.next Next
 
+:javascript
+  $(function() {
+
+    function getStrip(strip_id) {
+      $.ajax({
+        url: "/feeds/" + #{@feed.id} + "/get_strip",
+        type: "GET",
+        dataType: "json",
+        data: {
+          strip_id: strip_id
+        },
+        success: function(strip) {
+          var $strip = $("#strip");
+
+          $("#strip .keywords").append(strip.keywords);
+          $("#strip .up-votes").append(strip.up_vote_count);
+          $("#strip .down-votes").append(strip.down_vote_count);
+          // $("#strip .comments-count").append();
+
+          $("#strip .image").html("");
+          $("#strip .image").append("<img src='" + strip.strip_url + "'>");
+
+          $("#strip .links .previous").data("strip-id", strip.previous_strip_id);
+          $("#strip .links .next").data("strip-id", strip.next_strip_id);
+        }
+      });
+    }
+
+    $(".previous, .next").click(function(e) {
+      e.preventDefault();
+
+      var strip_id = $(this).data("strip-id");
+      getStrip(strip_id);
+    });
+
+    getStrip(null);
+  });

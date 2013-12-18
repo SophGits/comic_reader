@@ -16,6 +16,8 @@ ComicReader::Application.routes.draw do
       resources :comments
     end
 
+    get "/get_strip", to: "feeds#get_strip"
+
     resources :subscriptions
     delete "/subscriptions", to: "subscriptions#unsubscribe"
   end

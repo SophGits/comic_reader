@@ -20,23 +20,6 @@ class FeedsController < ApplicationController
 
     @feed = Feed.find(params[:id])
 
-    if current_user.subscriptions.where(feed_id: @feed.id, active: true).empty?
-      @strip = @feed.strips.order("created_at DESC").first
-    else
-      oldest_notification = Notification.where(feed_id: @feed.id, user_id: current_user.id, active: true).order("created_at ASC").first
-
-      if oldest_notification.nil?
-        @strip = @feed.strips.order("created_at DESC").first
-      else
-        @strip = Strip.find(oldest_notification.strip_id)
-
-        oldest_notification.active = false
-        oldest_notification.save
-      end
-    end
-
-
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @feed }
@@ -101,5 +84,42 @@ class FeedsController < ApplicationController
       format.html { redirect_to feeds_url }
       format.json { head :no_content }
     end
+  end
+
+  def get_strip
+    strip_id = params[:strip_id]
+    feed = Feed.find(params[:feed_id])
+
+    if strip_id.empty?
+      # get strip based on notifications
+      if current_user.subscriptions.where(feed_id: feed.id, active: true).empty?
+        strip = feed.strips.order("created_at DESC").first
+      else
+        oldest_notification = Notification.where(feed_id: feed.id, user_id: current_user.id, active: true).order("created_at ASC").first
+
+        if oldest_notification.nil?
+          strip = feed.strips.order("created_at DESC").first
+        else
+          strip = Strip.find(oldest_notification.strip_id)
+
+          oldest_notification.active = false
+          oldest_notification.save
+        end
+      end
+    else
+      # get requested strip
+      strip = Strip.find(strip_id)
+    end
+
+    next_strip_id = strip.id + 1
+    previous_strip_id = strip.id - 1
+
+    if strip.id == feed.strips.last.id
+      next_strip_id = feed.strips.first.id
+    elsif strip.id == feed.strips.first.id
+      previous_strip_id = feed.strips.last.id
+    end
+
+    render json: strip.as_json.merge({next_strip_id: next_strip_id, previous_strip_id: previous_strip_id})
   end
 end

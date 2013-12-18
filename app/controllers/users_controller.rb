@@ -28,6 +28,12 @@ class UsersController < Devise::RegistrationsController
   def drawing_board
     @user = current_user
     @feeds = @user.feeds.where("subscriptions.active = 't'")
+    # @notecount = Strip.where(feed_id: params[:feed_id], active: "true").first
+    # @notifications = @strips.where(active: "true").first
   end
+
+  # def unsubscribe
+    # subscription = Subscription.where(user_id: current_user.id, feed_id: params[:feed_id], active: true).first
+
 
 end

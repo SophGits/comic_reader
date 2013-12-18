@@ -48,7 +48,7 @@
   = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
   \|
   %ul
-    - @feed.strips.each do |strip|
+    - @feed.strips.order("created_at DESC").each do |strip|
       %li
         Strip id:
         = strip.id

@@ -90,15 +90,17 @@ namespace :parsers do
     end
   end
 
-  desc "run Up and Out parser"
-  task upandout: :environment do
-    feed = Feed.where(feed_type: "upandout").first
-    parser = UpandoutFeedParser.new
+  desc "run Dilbert Feed parser"
+  task dilbert: :environment do
+    feed = Feed.where(feed_type: "dilbert").first
+    parser = DilbertFeedParser.new
 
-      entry_url = feed.feed_url
+    rss_feed = Feedzirra::Feed.fetch_and_parse(feed.feed_url)
+    rss_feed.entries.each do |entry|
+      entry_url = entry.url
       parser.load_strip(entry_url, feed)
+    end
   end
-
 
   desc "run Sarah Anderson Comics parser"
   task sarah: :environment do
@@ -117,5 +119,16 @@ namespace :parsers do
       entry_url = feed.feed_url
       parser.load_strip(entry_url, feed)
   end
+
+  desc "run Up and Out parser" #not working..or it will only get one image since there's only one on each page
+  task upandout: :environment do
+    feed = Feed.where(feed_type: "upandout").first
+    parser = UpandoutFeedParser.new
+
+      entry_url = feed.feed_url
+      parser.load_strip(entry_url, feed)
+      parser.get_old_strips(feed) #apparently wrong number of args
+  end
+
 
 end

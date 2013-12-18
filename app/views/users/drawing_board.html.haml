@@ -5,11 +5,17 @@
   %h3='All subscriptions'
   %ul
     - @feeds.each do |feed|
-      %li= feed.title
+      %li= link_to feed.title, feed
       = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+      / = feed.notecount
+  %h4='All Notifications'
+  = "#{@user.notifications.size} new"
+
+
 .container
   %h1 Some image
   %br
+
 .nav-right
   %h3=link_to 'Inbox (messages list)', messages_path
   / =render "messages/conversation"

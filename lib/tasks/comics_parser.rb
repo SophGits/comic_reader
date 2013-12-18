@@ -1,16 +1,15 @@
 module ParserHelper
 
   class FeedParser
-
-    def record_notifications subscriptions, feed
+    def record_notifications subscriptions, strip
       subscriptions.each do |subscription|
         subscribed_user = subscription.user
-      # for each user, we create a record in notification table, with the feed id and the user id and active -> true
+      # for each user, we create a record in notification table, with the strip id and the user id and active -> true
 
         new_notification = Notification.new
-        new_notification.user_id = subscribed_user.id
-        new_notification.feed_id = feed.id
-        puts new_notification.save
+        new_notification.user = subscribed_user
+        new_notification.strip = strip
+        new_notification.save
       end
     end
   end
@@ -27,8 +26,9 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
+
           #find all users who subscribed to this feed
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -53,7 +53,7 @@ module ParserHelper
             strip = feed.strips.new
             strip.strip_url = img_url
             strip.save
-            record_notifications feed.subscriptions, feed
+            record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -77,7 +77,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -101,7 +101,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -125,7 +125,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -133,6 +133,39 @@ module ParserHelper
       #done by date in url
     end
   end
+######################### DILBERT ####################################
+  class DilbertFeedParser < FeedParser
+    def load_strip(entry_url, feed)
+      page_content = Nokogiri::HTML(open(entry_url))
+      page_content.css("img").each do |img|
+        img_url = img.attribute("src").value
+        img_url = "http://dilbert.com/" + img_url
+        old_strip = feed.strips.where(strip_url: img_url).first
+
+        if /zoom.gif/ =~ img_url && !old_strip
+          strip = feed.strips.new
+          strip.strip_url = img_url
+          strip.save
+          record_notifications feed.subscriptions, strip
+        end
+      end
+    end
+    ######## THIS DOES NOT YET WORK ########################
+    def get_old_strips(feed)
+      (535..542).each do |index|
+        entry_url = "http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/" + index.to_s + "/205" + index.to_s + "/205" + index.to_s + ".strip.zoom.gif"
+        load_strip(entry_url, feed)
+      end
+    end
+  end
+
+#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205537/205537.strip.zoom.gif
+#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205538/205538.strip.zoom.gif
+#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205539/205539.strip.zoom.gif
+#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205540/205540.strip.zoom.gif
+#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205541/205541.strip.zoom.gif
+
+
 ############################# PBF COMICS ################
   class PbfFeedParser < FeedParser
     def load_strip(entry_url, feed)
@@ -146,7 +179,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -170,7 +203,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -179,7 +212,7 @@ module ParserHelper
       #
     end
   end
-######################### Up AND OUT #################################### NOT WORKING
+######################### UP AND OUT #################################### NOT WORKING
   class UpandoutFeedParser < FeedParser
     def load_strip(entry_url, feed)
       page_content = Nokogiri::HTML(open(entry_url))
@@ -191,7 +224,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -199,7 +232,7 @@ module ParserHelper
     def get_old_strips(feed)
         (1..159).each do |index|
         entry_url = "http://jeremykaye.tumblr.com/page/" + index.to_s
-        load_strip(feed)
+        load_strip(entry_url, feed)
       end
     end
   end
@@ -215,7 +248,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
         end
       end
     end
@@ -231,7 +264,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, feed
+          record_notifications feed.subscriptions, strip
       end
     end
   end
@@ -276,44 +309,6 @@ module ParserHelper
   #   end
   # end
 
-######################### DILBERT ####################################
-  class DilbertFeedParser < FeedParser
-    def load_strip(entry_url, feed)
-      page_content = Nokogiri::HTML(open(entry_url))
-
-      page_content.css("img").each do |img|
-        img_url = img.attribute("src").value
-
-        if /zoom.gif/ =~ img_url
-          strip = Strip.new
-          strip.strip_url = "http://dilbert.com/" + img_url
-          strip.feed = feed
-          strip.save
-
-          break
-        end
-      end
-    end
-
-    ######## THIS DOES NOT YET WORK ########################
-    def get_old_strips(feed)
-      (535..542).each do |index|
-        entry_url = "http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/" + index.to_s + "/205" + index.to_s + "/205" + index.to_s + ".strip.zoom.gif"
-        load_strip(entry_url, feed)
-      end
-    end
-
-  end
-
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/100000/90000/9000/200/199205/199205.strip.zoom.gif
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205536/205536.strip.zoom.gif
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205537/205537.strip.zoom.gif
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205538/205538.strip.zoom.gif
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205539/205539.strip.zoom.gif
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205540/205540.strip.zoom.gif
-#   http://dilbert.com/dyn/str_strip/000000000/00000000/0000000/200000/00000/5000/500/205541/205541.strip.zoom.gif
-
-end
 
 ############################# SIMON'S CAT ################ NOT WORKING ####
   # class CatFeedParser < FeedParser
@@ -394,3 +389,4 @@ end
     #   end
     # end
 
+end

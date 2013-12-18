@@ -4,6 +4,6 @@ class Notification < ActiveRecord::Base
   belongs_to :user
   belongs_to :strip
 
-  validates_uniqueness_of :user_id, :scope => [:feed_id]
+  validates_uniqueness_of :user_id, :scope => [:strip_id]
 end
 

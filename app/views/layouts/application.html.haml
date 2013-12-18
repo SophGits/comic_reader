@@ -2,13 +2,22 @@
 %html
   %head
     %link{href: "http://fonts.googleapis.com/css?family=Cabin+Sketch:400,700", rel: "stylesheet", type: "text/css"}
+    %link{href: "http://fonts.googleapis.com/css?family=Londrina+Sketch", rel: "stylesheet", type: "text/css"}
+    %link{href: "http://fonts.googleapis.com/css?family=Alegreya+Sans+SC:500", rel: "stylesheet", type: "text/css"}
     %title Comic Reader
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
   %body.grid
-    .col-100
-      %ul
+    %ul.col-100
+      .heading=link_to "Comic Reader", "/"
+      .fred
+        = form_tag searches_path do
+          / = label_tag :strip_search
+          = text_field_tag :query
+          = submit_tag 'Strip search'
+      %ul.col-100
+        \|
         - if user_signed_in?
           %li= link_to 'Home', "/"
           \|
@@ -24,7 +33,7 @@
           \|
           %li= link_to 'Logout',  destroy_user_session_path, method: :delete
           \|
-          %li= image_tag (current_user.avatar.thumb)
+          %li.prfle= image_tag (current_user.avatar.thumb)
         - else
           %li= link_to 'Sign up', new_user_registration_path
           \|
@@ -33,10 +42,6 @@
           %li= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
           \|
           %li= link_to "Sign in with Twitter...not yet!"
-        = form_tag searches_path do
-          / = label_tag :strip_search
-          = text_field_tag :query
-          = submit_tag 'Strip search'
 
       - flash.each do |name, msg|
         = content_tag :div, msg, :id => "flash_#{name}"

@@ -1,6 +1,8 @@
 // VARIABLES AND MIXINS
 
 $family    : 'Cabin Sketch', 'Arial', 'Helvetica', sans-serif;
+$big-family: 'Londrina Sketch', 'Arial', cursive;
+$small-font: 'Alegreya Sans SC', sans-serif;
 $primary   : #00D6DD;
 $secondary : #D4FF00;
 $grey_dark : #303233;
@@ -15,6 +17,7 @@ $yellow    : #ffff33;
   box-sizing: border-box;
   font-size: 1.1em;
   // background-color: #dde;
+  color: black;
 }
 
 
@@ -44,7 +47,6 @@ body {
   clear: both;
   }
 
-
   [class*='col-'] {
     float: left;
     padding-right: $pad;
@@ -62,6 +64,7 @@ body {
       line-height: 2em;
       // vertical-align: middle;
         li {
+          font-family: $small-font;
           display: inline;
           background-color: #ccc;
           color: yellow;
@@ -77,6 +80,9 @@ body {
       background: #ffee66;
       overflow: scroll;
       padding: 0.625rem; /* keeps text off the left side of the screen */
+        ul li {
+          font-family: $small-font;
+        }
     }
 //   .container
     .col-58 {
@@ -100,19 +106,6 @@ body {
 //     line-height: 2.2em;
     }
   }
-
-//   .nav-left {
-//   }
-//   .container {
-//   }
-//   .nav-right {
-//   }
-//   .title {
-//     width: 100%;
-//     height: auto;
-//     background-color: pink;
-//   }
-// }
 
   h1 {
     font-family: $family;
@@ -138,6 +131,17 @@ body {
     font-family: $family;
     font-size: 1.5em;
     line-height: 1.4em;
+  }
+  .heading {
+    font-family: $big-family;
+    font-size: 5.5em;
+    line-height: 0.5em;
+    font-weight: bold;
+    display: inline-block;
+  }
+  .fred {
+    background-color: purple;
+    display: inline-block;
   }
   a {
     text-decoration: none;
@@ -208,46 +212,6 @@ and (orientation : portrait) {
 /**********
 * LAYOUT *
 **********/
-
-
-
-
-// .content {
-//   background: white;
-//   padding: 0.625em;
-//   height: 20em;
-//   width: 40em;
-//   margin: auto;
-// }
-// .content div.btn-left a{
-//   float: left;
-//   left: -3em;
-//   top: 5em;
-//   position: relative;
-//   text-decoration: none;
-//   font-size: 2em;
-//   color: cyan;
-// }
-// .content div.btn-right a{
-//   float: right;
-//   right: -3em;
-//   top: 5em;
-//   position: relative;
-//   text-decoration: none;
-//   font-size: 2em;
-//   color: cyan;
-// }
-
-// footer {
-//   clear: both;
-//   position: fixed;
-//   bottom: 0.5em;
-//   left: 2em;
-//   height: 2em;
-//   width: 90%;
-//   background-color: #def345;
-//   border: 1px solid gray;
-// }
 
 /*This is cool, using pseudo element: */
 /*.container:before {

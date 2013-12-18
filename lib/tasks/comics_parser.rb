@@ -1,7 +1,7 @@
 module ParserHelper
 
   class FeedParser
-    def record_notifications subscriptions, strip
+    def record_notifications subscriptions, feed, strip
       subscriptions.each do |subscription|
         subscribed_user = subscription.user
       # for each user, we create a record in notification table, with the strip id and the user id and active -> true
@@ -9,6 +9,7 @@ module ParserHelper
         new_notification = Notification.new
         new_notification.user = subscribed_user
         new_notification.strip = strip
+        new_notification.feed = feed
         new_notification.save
       end
     end
@@ -28,7 +29,7 @@ module ParserHelper
           strip.save
 
           #find all users who subscribed to this feed
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -53,7 +54,7 @@ module ParserHelper
             strip = feed.strips.new
             strip.strip_url = img_url
             strip.save
-            record_notifications feed.subscriptions, strip
+            record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -77,7 +78,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -101,7 +102,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -125,7 +126,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -146,7 +147,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -179,7 +180,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -203,7 +204,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -224,7 +225,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -248,7 +249,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
         end
       end
     end
@@ -264,7 +265,7 @@ module ParserHelper
           strip = feed.strips.new
           strip.strip_url = img_url
           strip.save
-          record_notifications feed.subscriptions, strip
+          record_notifications feed.subscriptions, feed, strip
       end
     end
   end

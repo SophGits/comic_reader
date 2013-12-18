@@ -14,6 +14,7 @@ class FeedsController < ApplicationController
   # GET /feeds/1.json
   def show
     @feed = Feed.find(params[:id])
+    @feed.set_notifications_as_unactive(current_user.id)
 
     respond_to do |format|
       format.html # show.html.erb

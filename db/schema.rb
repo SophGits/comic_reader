@@ -50,11 +50,12 @@ ActiveRecord::Schema.define(:version => 20131216145836) do
   end
 
   create_table "notifications", :force => true do |t|
-    t.boolean  "active",     :default => false
+    t.boolean  "active",     :default => true
     t.integer  "user_id"
     t.integer  "strip_id"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.integer  "feed_id"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "strips", :force => true do |t|

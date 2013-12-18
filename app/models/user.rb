@@ -19,25 +19,22 @@ class User < ActiveRecord::Base
   attr_accessible :username, :role, :created_at, :avatar, :remote_avatar_url
   mount_uploader :avatar, ImageUploader
 
-   def self.from_omniauth(auth)
-      if user = User.find_by_email(auth.info.email)
+  def self.from_omniauth(auth)
+    if user = User.find_by_email(auth.info.email)
+      user.provider = auth.provider
+      user.uid = auth.uid
+      user
+    else
+      where(auth.slice(:provider, :uid)).first_or_create do |user|
         user.provider = auth.provider
         user.uid = auth.uid
+        user.email = auth.info.email
+        user.password = Devise.friendly_token[0,20]
+        # user.skip_confirmation!
         user
-      else
-        where(auth.slice(:provider, :uid)).first_or_create do |user|
-          user.provider = auth.provider
-          user.uid = auth.uid
-          user.email = auth.info.email
-          user.password = Devise.friendly_token[0,20]
-          user.skip_confirmation!
-          user
-          # don't require email confirmation
-        end
+        # don't require email confirmation
       end
-    send
+    end
   end
-
-
 
 end

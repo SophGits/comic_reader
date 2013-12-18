@@ -62,8 +62,8 @@ DinosaurFeedParser.new.get_old_strips(dinosaur)
 ctrl = Feed.create(title: "CTRL ALT DEL", logo: "", main_url: "", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "It's CTRL_ALT_DEL, in't it....", summary: "", author: "", feed_type: "ctrl")
 ctrl.save!
 
-cat = Feed.create(title: "Simon's Cat", logo: "", main_url: "", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "blah blah blah", summary: "", author: "Simon Tofield", feed_type: "cat")
-cat.save!
+# cat = Feed.create(title: "Simon's Cat", logo: "", main_url: "", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "blah blah blah", summary: "", author: "Simon Tofield", feed_type: "cat")
+# cat.save!
 
 pbf = Feed.create(title: "Perry Bible Fellowship", logo: "", main_url: "", feed_url: "http://pbfcomics.com/feed/feed.xml", keywords: "blah blah blah", summary: "", author: "", feed_type: "pbf")
 pbf.save!

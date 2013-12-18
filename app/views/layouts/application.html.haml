@@ -14,8 +14,8 @@
       .searchbox
         = form_tag searches_path do
           / = label_tag :strip_search
-        = text_field_tag :query, 'strip'
-        = submit_tag 'search'
+          = text_field_tag :query, 'strip'
+          = submit_tag 'search'
       %ul
         \|
         - if user_signed_in?

@@ -17,10 +17,9 @@ $yellow    : #ffff33;
   box-sizing: border-box;
   font-size: 1.1em;
   // background-color: #dde;
-  color: black;
+  a:hover {background-color: transparent;}
+  a:active {background-color: transparent;}
 }
-
-
 
 /**********
 * Column stuff from http://css-tricks.com/dont-overthink-it-grids/  *
@@ -31,22 +30,21 @@ $yellow    : #ffff33;
 $pad: 20px;
 
 body {
-  // background-color: inherit;
+  background-color: inherit;
   width: 1350px;
   height: 100%;
 }
-
 .grid {
   margin: 0;
   width: 100%;
-
+  padding: 0 10px;
+  padding: 0.4em auto;
   &:after {
   /* or @extend clearfix */
   content: "";
   display: table;
   clear: both;
   }
-
   [class*='col-'] {
     float: left;
     padding-right: $pad;
@@ -54,10 +52,9 @@ body {
 // nav.nav-top
   .col-100 {
     width: 100%;
-    min-width: 180px;
-    background: red;
-    padding: 0.4em;
+    background: $yellow;
      ul {
+      width: 100%;
       background-color: pink;
       list-style-type: none;
       display: inline-block;
@@ -71,8 +68,21 @@ body {
           margin: 0.5em; /*space between li items */
           padding: 8px; /* more space around each li item */
           }
+        }
       }
-    }
+
+    .col-70 {width: 70%;}
+    .col-30 {width: 30%;
+
+        li {
+          font-family: $small-font;
+          display: inline;
+          background-color: #ccc;
+          color: yellow;
+          margin: 0.5em; /*space between li items */
+          padding: 8px; /* more space around each li item */
+
+      }}
 // .nav-left
     .col-22 {
       width: 22%;
@@ -109,7 +119,7 @@ body {
 
   h1 {
     font-family: $family;
-    font-size: 2.8em;
+    // font-size: 2.8em;
     }
   h2 {
     font-family: $family;
@@ -135,16 +145,37 @@ body {
   .heading {
     font-family: $big-family;
     font-size: 5.5em;
-    line-height: 0.5em;
+    // line-height: 0.5em;
     font-weight: bold;
     display: inline-block;
+    padding: 0 2em 0 0;
+    a {
+      color: black;
+      &:hover {
+        color: blue;
+      }
+    }
   }
-  .fred {
-    background-color: purple;
+  .searchbox {
     display: inline-block;
+    float: right;
+     input{
+      color: $yellow;
+      font-size: 1.6em;
+      font-family: $small-font;
+      padding: 0.2em; /* padding of text within box */
+      border: none;
+      border-radius:2px;
+    }
+      input#query {
+        color: $grey_light;
+        background-color: $yellow;
+        border: 1px solid $grey_light;
+      }
   }
   a {
     text-decoration: none;
+    color: $grey_dark;
   }
 
 /***************

@@ -1,7 +1,8 @@
-%h1.title (back to the) Drawing board
-%h4 Where a user can see their feeds and messages.
+.col-100
+  %h1.title (back to the) Drawing board
+  %h4 Where a user can see their feeds and messages.
 
-.nav-left
+.col-22
   %h3='All subscriptions'
   %ul
     - @feeds.each do |feed|
@@ -12,11 +13,11 @@
   = "#{@user.notifications.size} new"
 
 
-.container
+.col-58
   %h1 Some image
   %br
 
-.nav-right
+.col-20
   %h3=link_to 'Inbox (messages list)', messages_path
   / =render "messages/conversation"
   %h3='Tweets'

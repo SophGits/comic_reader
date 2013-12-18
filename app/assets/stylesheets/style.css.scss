@@ -18,90 +18,101 @@ $yellow    : #ffff33;
 }
 
 
+
+/**********
+* Column stuff from http://css-tricks.com/dont-overthink-it-grids/  *
+**********/
+
+ // * { @include box-sizing(border-box); }
+
+$pad: 20px;
+
 body {
   // background-color: inherit;
   width: 1350px;
-  height: 99%;
-  .nav.nav-top {
-    background: red;
+  height: 100%;
+}
+
+.grid {
+  margin: 0;
+  width: 100%;
+
+  &:after {
+  /* or @extend clearfix */
+  content: "";
+  display: table;
+  clear: both;
+  }
+
+
+  [class*='col-'] {
+    float: left;
+    padding-right: $pad;
+    }
+// nav.nav-top
+  .col-100 {
     width: 100%;
-    display: inline-block;
-    height: auto;
-    top: 0.5em;
-    padding: 1em 1.5em;
-    background-color: red;
+    min-width: 180px;
+    background: red;
     padding: 0.4em;
-    // margin-left: 20%;
      ul {
       background-color: pink;
       list-style-type: none;
       display: inline-block;
       line-height: 2em;
-      width: auto;
-      display: table-cell;
-    vertical-align: middle;
-      height: 40px;
-      margin: 0;
-      padding: 0;
+      // vertical-align: middle;
         li {
           display: inline;
-          line-height: 1.8em;
-          // padding: 2px;
-          margin: 0.5em;
-          border: 1pz solid #000;
           background-color: #ccc;
-          // text-align: center;
           color: yellow;
+          margin: 0.5em; /*space between li items */
+          padding: 8px; /* more space around each li item */
           }
       }
     }
-  .nav-left {
-    background: #ffee66;
-    // float: left;
-    height: 70%;
-    width: 22%;
-    left: 1em;
-    top: 7em;
-    padding: 0.625rem;
-    display: inline-block;
-    overflow: scroll;
+// .nav-left
+    .col-22 {
+      width: 22%;
+      min-width: 18em;
+      background: #ffee66;
+      overflow: scroll;
+      padding: 0.625rem; /* keeps text off the left side of the screen */
+    }
+//   .container
+    .col-58 {
+      width: 58%;
+      min-width: 54em;
+      max-width: 100%;
+      min-height: 30em;
+      border: black dashed 1px;
+      background: #ccc;
+      overflow: auto;
+    }
+//   .nav-right
+    .col-20 {
+      width: 20%;
+      min-width: 16em;
+      max-width: 100%;
+      background: #ff99cc;
+      height: 80%;
+//     padding: 0.625rem;
+//     overflow: scroll;
+//     line-height: 2.2em;
+    }
   }
-  .container {
-    // position: relative;
-    top: 14em;
-    // bottom: 3em;
-    left: 23%;
-    right: 21%;
-    display: inline-block;
-    width: 55%;
-    height: 22em;
-    border: black dashed 2px;
-    background: #ccc;
-    // max-width: 1300px;
-    // min-width: 600px;
-    // height: 600px;
-    overflow: auto;
-  }
-  .nav-right {
-    background: #ff99cc;
-    // float: right;
-    display: inline-block;
-    position: absolute;
-    min-height: 30em;
-    width: 20%;
-    padding: 0.625rem;
-    top: 7em;
-    right: 1em;
-    overflow: scroll;
-    line-height: 2.2em;
-  }
-  .title {
-    width: 100%;
-    height: auto;
-    background-color: pink;
-  }
-}
 
+//   .nav-left {
+//   }
+//   .container {
+//   }
+//   .nav-right {
+//   }
+//   .title {
+//     width: 100%;
+//     height: auto;
+//     background-color: pink;
+//   }
+// }
 
   h1 {
     font-family: $family;
@@ -110,15 +121,17 @@ body {
   h2 {
     font-family: $family;
     font-size: 2.2em;
-    line-height: 2.2em;
+    line-height: 1em;
   }
   h3 {
     font-family: $family;
     font-size: 1.8em;
+    line-height: 1em;
   }
   h4 {
     font-family: $family;
     font-size: 1.4em;
+    line-height: 1em;
   }
 
   .comic {
@@ -130,34 +143,67 @@ body {
     text-decoration: none;
   }
 
-  .left {
-    float: left;
+/***************
+* MEDIA QUERIES *
+****************/
+
+
+ /* Desktops and laptops ----------- */
+@media only screen and (max-width : 700px) {
+  body {
+
+  }
+  .col-22 {
+    width: 100%;
   }
 
-  .right {
-    float: right;
+  .col-58 {
+    width: 100%;
+    }
+  .col-20 {
+    width: 100%;
   }
+}
+/* for mobile */
+/* remember to change max-width to max-device-width */
+@media only screen and (min-width : 320px)
+and (max-width : 480px)
+and (orientation : portrait) {
+    body {
+
+    }
+    .nav_left{
+
+    }
+    .nav_right {
+
+    }
+    .container {
+
+    }
+  }
+
 
 /*************
 * SLIDESHOW *
 *************/
-.slider {
-  margin: 10px 0;
-  width: 500px; /* width of slideshow */
-  height: 380px; /* height of slideshow */
-  position: relative; /* The element is positioned relative to its normal position */
-  overflow: hidden;
-  img {
-    width: 480px;
-    height: 350px;
-  }
-}
-.slider li {
-  display: none;
-  position: absolute;
-  top: 0;
-  left: 0;
-}
+// .slider {
+//   margin: 10px 0;
+//   width: 500px; /* width of slideshow */
+//   height: 380px; /* height of slideshow */
+//   position: relative; /* The element is positioned relative to its normal position */
+//   overflow: hidden;
+//   img {
+//     width: 480px;
+//     height: 350px;
+//   }
+// }
+// .slider li {
+//   display: none;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+// }
 
 /**********
 * LAYOUT *
@@ -221,6 +267,7 @@ a:focus {
 /**********
 * HACKS *
 **********/
+// Not sure if this is relevant still
 .cf:before,
 .cf:after {
   content: " ";
@@ -231,40 +278,3 @@ a:focus {
   clear: both;
  }
 
-
-/**********
-* Column stuff from http://css-tricks.com/dont-overthink-it-grids/  *
-**********/
-
-//  * { @include box-sizing(border-box); }
-
-// $pad: 20px;
-// .grid {
-// background: green;
-// margin 0 0 $pad 0;
-
-// &:after {
-//   /* or @extend clearfix */
-//   content: "";
-//   display: table;
-//   clear: both;
-//   }
-// }
-// [class*='col-'] {
-//   float: left;
-//   padding-right: $pad;
-//   .grid &:last-of-type {
-//   padding-right: 0;
-//   }
-// .col-22 {
-//   width: 22%;
-// }
-// .col-58 {
-//   width: 58%;
-// }
-// .col-20 {
-//   width: 20%;
-// }
-// .col-100 {
-//   width: 100%;
-// }

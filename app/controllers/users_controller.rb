@@ -26,6 +26,11 @@ class UsersController < Devise::RegistrationsController
 
 
   def drawing_board
+    if not current_user
+      redirect_to :new_user_session
+      return
+    end
+
     @user = current_user
     @feeds = @user.feeds.where("subscriptions.active = 't'")
     # @notecount = Strip.where(feed_id: params[:feed_id], active: "true").first

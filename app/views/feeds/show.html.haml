@@ -47,27 +47,27 @@
   \|
   = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
   \|
-  %ul
-    - @feed.strips.order("created_at DESC").each do |strip|
+  - if @strip
+    %ul
       %li
         Strip id:
-        = strip.id
+        = @strip.id
       %li
         Keywords:
-        = strip.keywords
+        = @strip.keywords
       %li
         Up-votes:
-        = strip.up_vote_count
+        = @strip.up_vote_count
       %li
         Down-votes:
-        = strip.down_vote_count
+        = @strip.down_vote_count
       %li
         Created at:
-        = strip.created_at
+        = @strip.created_at
       %li
         Strip url:
-        =image_tag (strip.strip_url)
+        =image_tag (@strip.strip_url)
       %li
         Comments count (viewable on show page):
-        = link_to pluralize(strip.comments.count, "comment"), feed_strip_path(@feed, strip)
+        = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
 

@@ -13,8 +13,29 @@ class FeedsController < ApplicationController
   # GET /feeds/1
   # GET /feeds/1.json
   def show
+    if not current_user
+      redirect_to :new_user_session
+      return
+    end
+
     @feed = Feed.find(params[:id])
-    @feed.set_notifications_as_unactive(current_user.id)
+
+    if current_user.subscriptions.where(feed_id: @feed.id, active: true).empty?
+      @strip = @feed.strips.order("created_at DESC").first
+    else
+      oldest_notification = Notification.where(feed_id: @feed.id, user_id: current_user.id, active: true).order("created_at ASC").first
+
+      if oldest_notification.nil?
+        @strip = @feed.strips.order("created_at DESC").first
+      else
+        @strip = Strip.find(oldest_notification.strip_id)
+
+        oldest_notification.active = false
+        oldest_notification.save
+      end
+    end
+
+
 
     respond_to do |format|
       format.html # show.html.erb

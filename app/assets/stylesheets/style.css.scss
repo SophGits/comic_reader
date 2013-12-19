@@ -33,6 +33,8 @@ body {
   background-color: inherit;
   width: 1350px;
   height: 100%;
+    font-family: $small-font;
+  font-size: 14px;
 }
 .grid {
   margin: 0;
@@ -53,11 +55,17 @@ body {
   .col-100 {
     width: 100%;
     background: $yellow;
-     ul {
+      }
+  .col-100-menu {
+    width: 100%;
+    padding: 0 5em;
+    text-align: justify;
+    border: 1px solid gray;
+      ul {
       width: 100%;
       background-color: pink;
       list-style-type: none;
-      display: inline-block;
+      display: inline;
       line-height: 2em;
       // vertical-align: middle;
         li {
@@ -65,7 +73,7 @@ body {
           display: inline;
           background-color: #ccc;
           color: yellow;
-          margin: 0.5em; /*space between li items */
+          margin: 2.2%; /*space between li items */
           padding: 8px; /* more space around each li item */
           }
         }
@@ -223,22 +231,46 @@ and (orientation : portrait) {
 * SLIDESHOW *
 *************/
 .slider {
-  margin: 10px 0;
-  width: 500px; /* width of slideshow */
-  height: 380px; /* height of slideshow */
+  margin: 0 auto;
+  width: 910px; /* width of slideshow */
+  height: 610px; /* height of slideshow */
   position: relative; /* The element is positioned relative to its normal position */
   overflow: hidden;
   img {
-    width: 480px;
-    height: 350px;
+    display: block;
+    max-width:900px;
+    max-height:600px;
+    width: auto;
+    height: auto;
   }
 }
 .slider li {
-  display: none;
+  // display: none;
   position: absolute;
   top: 0;
   left: 0;
 }
+
+
+.col-100-slider {
+    width: 100%;
+    background: blue;
+    padding: 0 auto;
+     // ul {
+     //  width: 100%;
+     //  background-color: pink;
+     //  list-style-type: none;
+     //  display: inline-block;
+     //    li {
+     //      font-family: $small-font;
+     //      display: inline;
+     //      background-color: #ccc;
+     //      color: yellow;
+     //      margin: 0.5em; /*space between li items */
+     //      padding: 8px; /* more space around each li item */
+     //      }
+     //    }
+      }
 
 /**********
 * LAYOUT *

@@ -11,10 +11,6 @@ class HomeController < ApplicationController
     rand_feed = Feed.all.sample
     @rand_strips = rand_feed.strips
 
-    # @rand_strip = rand_feed.strips.all.sample
-    # @rand_strip_2 = rand_feed.strips.all.sample
-
-
   end
 
 end

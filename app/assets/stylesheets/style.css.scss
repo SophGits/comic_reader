@@ -9,6 +9,7 @@ $grey_dark : #303233;
 $grey_mid  : #66757F;
 $grey_light: #ABC4CA;
 $yellow    : #ffff33;
+$pad: 5px;
 
 /* This is telling the browser to calculate everything from the border inwards; not the content outwards. Previously, adding padding would increase the width & height of your containers by the amount of padding and break your layout */
 *, *:before, *:after {
@@ -27,18 +28,19 @@ $yellow    : #ffff33;
 
  // * { @include box-sizing(border-box); }
 
-$pad: 20px;
 
 body {
-  background-color: inherit;
+  // background-color: inherit;
+  background-image: url("../images/dilbert2.png");
+  background-repeat:repeat-y;
   width: 1350px;
   height: 100%;
-    font-family: $small-font;
+  font-family: $small-font;
   font-size: 14px;
 }
 .grid {
-  margin: 0;
   width: 100%;
+  margin: 0;
   padding: 0 10px;
   padding: 0.4em auto;
   &:after {
@@ -49,18 +51,17 @@ body {
   }
   [class*='col-'] {
     float: left;
-    padding-right: $pad;
+    padding: 0 $pad;
     }
 // nav.nav-top
   .col-100 {
     width: 100%;
     background: $yellow;
       }
-  .col-100-menu {
+  .col-menu {
     width: 100%;
-    padding: 0 5em;
-    text-align: justify;
     border: 1px solid gray;
+    background-color: red;
       ul {
       width: 100%;
       background-color: pink;
@@ -69,14 +70,25 @@ body {
       line-height: 2em;
       // vertical-align: middle;
         li {
+          // margin: auto;
           font-family: $small-font;
           display: inline;
           background-color: #ccc;
           color: yellow;
-          margin: 2.2%; /*space between li items */
+          margin: 0.5em; /*space between li items */
           padding: 8px; /* more space around each li item */
+          low {
+            padding-bottom: -10px; //this doesn't work
+          }
           }
         }
+
+            .col-25 {
+              width: 20%;
+              float: left;
+              margin-bottom: 30px;
+              display: inline-block;
+            }
       }
 
     .col-70 {width: 70%;}
@@ -91,6 +103,7 @@ body {
           padding: 8px; /* more space around each li item */
 
       }}
+
 // .nav-left
     .col-22 {
       width: 22%;
@@ -119,8 +132,8 @@ body {
       max-width: 100%;
       background: #ff99cc;
       height: 80%;
+      overflow: scroll;
 //     padding: 0.625rem;
-//     overflow: scroll;
 //     line-height: 2.2em;
     }
   }
@@ -186,6 +199,17 @@ body {
     color: $grey_dark;
   }
 
+  .inputgroup {
+      font-family: $small-font;
+      padding: 10px; /* padding of text within box */
+      border-radius: 2px;
+      background-color: #ccc;
+      margin: 5px;
+      .small {
+        font-size: 0.9rem;
+      }
+  }
+
 /***************
 * MEDIA QUERIES *
 ****************/
@@ -233,7 +257,7 @@ and (orientation : portrait) {
 .slider {
   margin: 0 auto;
   width: 910px; /* width of slideshow */
-  height: 610px; /* height of slideshow */
+  height: 650px; /* height of slideshow */
   position: relative; /* The element is positioned relative to its normal position */
   overflow: hidden;
   img {
@@ -250,8 +274,6 @@ and (orientation : portrait) {
   top: 0;
   left: 0;
 }
-
-
 .col-100-slider {
     width: 100%;
     background: blue;
@@ -271,6 +293,8 @@ and (orientation : portrait) {
      //      }
      //    }
       }
+
+
 
 /**********
 * LAYOUT *

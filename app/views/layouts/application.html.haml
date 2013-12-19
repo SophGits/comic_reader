@@ -17,9 +17,8 @@
             / = label_tag :strip_search
             = text_field_tag :query, 'strip'
             = submit_tag 'search'
-      .col-100-menu
+      .col-menu
         %ul
-          \|
           - if user_signed_in?
             %li= link_to 'Home', "/"
             \|
@@ -40,7 +39,7 @@
             \|
             %li= link_to 'Logout',  destroy_user_session_path, method: :delete
             \|
-            %li.prfle= image_tag (current_user.avatar.thumb)
+            %li.low= image_tag (current_user.avatar.thumb)
           - else
             %li= link_to 'Sign up', new_user_registration_path
             \|

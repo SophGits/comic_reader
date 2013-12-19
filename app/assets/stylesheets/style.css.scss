@@ -29,8 +29,8 @@ $yellow    : #ffff33;
 
 
 body {
-  // background-color: inherit;
-  background-image: url("dilbert2.png");
+  background-color: inherit;
+  // background-image: url("dilbert2.png");
   background-repeat:repeat;
   width: 1350px;
   height: 100%;
@@ -93,6 +93,9 @@ body {
     .col-70 {width: 70%;}
     .col-30 {width: 30%;
 
+    .col-50-left {position: absolute; float:left;}
+    .col-50-right {position: relative; float:right;}
+
         li {
           font-family: $small-font;
           display: inline;
@@ -100,8 +103,11 @@ body {
           color: yellow;
           margin: 0.5em; /*space between li items */
           padding: 8px; /* more space around each li item */
+      }
+    }
 
-      }}
+    .previous{float: left;}
+    .next{float: right;}
 
 // .nav-left
     .col-22 {
@@ -230,8 +236,9 @@ body {
         .title {width: 45%;}
         .summary {}
         .author {width: 15%;}
-        .odd {background-image: url("dilbert2.png");}
-        .even {background-color: green;}
+        .odd {background-color:  #ccf;}
+        // .odd {background-image: url("dilbert2.png");}
+        .even {background-color: #ccd;}
       }
 
 /***************

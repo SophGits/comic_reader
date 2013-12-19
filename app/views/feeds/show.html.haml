@@ -1,73 +1,73 @@
 %p#notice= notice
 .col-100
-  %h1 FEEDS SHOW page
-
-%p
-  - if Subscription.is_subscribed?(current_user.id, @feed.id)
-    = link_to 'Unsubscribe', "/feeds/#{@feed.id}/subscriptions", method: :delete
-  - else
-    = link_to 'Subscribe', "/feeds/#{@feed.id}/subscriptions", method: :post
-
-
-%ul
-  %li
-    %b Feed title:
-    = @feed.title
-  %li
-    %b Feed logo:
+  .col-50-left
+    %h1="#{@feed.title}"
+  .col-50-right
     =image_tag @feed.logo
-  %li
-    %b Main url:
-    = @feed.main_url
-  %li
-    %b Feed url:
-    = @feed.feed_url
-  %li
-    %b Keywords:
-    = @feed.keywords
-  %li
-    %b Summary:
-    = @feed.summary
-  %li
-    %b Author:
-    = @feed.author
-  %li
-    %b Flag count:
-    = @feed.flag_count
-  %li
-    %b Up vote count:
-    = @feed.up_vote_count
-  %li
-    %b Down vote count:
-    = @feed.down_vote_count
+    - if Subscription.is_subscribed?(current_user.id, @feed.id)
+      = link_to 'Unsubscribe', "/feeds/#{@feed.id}/subscriptions", method: :delete
+    - else
+      = link_to 'Subscribe', "/feeds/#{@feed.id}/subscriptions", method: :post
 
-  = link_to 'Edit', edit_feed_path(@feed)
-  \|
-  = link_to 'Back', feeds_path
-  \|
-  = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
-  \|
-  #strip
-    .keywords
-      Keywords:
-      / = @strip.keywords
-    .up-votes
-      Up-votes:
-      / = @strip.up_vote_count
-    .down-votes
-      Down-votes:
-      / = @strip.down_vote_count
-    .created-at
-      Created at:
-      / = @strip.created_at
-    .image
-      / =image_tag (@strip.strip_url)
-    .comments-count
-      Comments count (viewable on show page):
-      / = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
-    .links
-      %a.previous Previous
-      %a.next Next
+/ %ul
+/   %li
+/     %b Feed title:
+/     = @feed.title
+/   %li
+/     %b Feed logo:
+/     =image_tag @feed.logo
+/   %li
+/     %b Main url:
+/     = @feed.main_url
+/   %li
+/     %b Feed url:
+/     = @feed.feed_url
+/   %li
+/     %b Keywords:
+/     = @feed.keywords
+/   %li
+/     %b Summary:
+/     = @feed.summary
+/   %li
+/     %b Author:
+/     = @feed.author
+/   %li
+/     %b Flag count:
+/     = @feed.flag_count
+/   %li
+/     %b Up vote count:
+/     = @feed.up_vote_count
+/   %li
+/     %b Down vote count:
+/     = @feed.down_vote_count
+
+/   = link_to 'Edit', edit_feed_path(@feed)
+/   \|
+/   = link_to 'Back', feeds_path
+/   \|
+/   = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
+/   \|
+#strip
+  / .keywords
+  /   Keywords:
+  /   / = @strip.keywords
+  / .up-votes
+  /   Up-votes:
+  /   / = @strip.up_vote_count
+  / .down-votes
+  /   Down-votes:
+  /   / = @strip.down_vote_count
+  / .created-at
+  /   Created at:
+  /   / = @strip.created_at
+  .image
+    / =image_tag (@strip.strip_url)
+  .comments-count
+    / Comments count (viewable on show page):
+    / = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
+  .links
+    %a.previous Previous
+    %a.next Next
 
 :javascript
   $(function() {

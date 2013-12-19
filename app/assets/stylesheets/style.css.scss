@@ -209,11 +209,27 @@ body {
       font-family: $small-font;
       padding: 10px; /* padding of text within box */
       border-radius: 2px;
-      background-color: #ccc;
+      background-color: $yellow;
       margin: 5px;
       .small {
         font-size: 0.9rem;
       }
+
+         input{
+          color: blue;
+          font-size: 1em;
+          font-family: $small-font;
+          padding: 0.2em; /* padding of text within box */
+          border: none;
+          border-radius:2px;
+          background-color: inherit;
+        }
+          input#query {
+            color: $grey_light;
+            background-color: $yellow;
+            border: 1px solid $grey_light;
+          }
+
   }
      #update input{
         background-color: #66cc00;

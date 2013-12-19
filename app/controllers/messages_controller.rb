@@ -12,7 +12,8 @@ class MessagesController < ApplicationController
     end
     @users = []
     user_ids.each do |user_id|
-      @users << User.select(:username).find(user_id)
+      user = User.select(:username).where(id: user_id).first
+      @users << user unless user.nil?
      end
 
   respond_to do |format|
@@ -114,9 +115,9 @@ class MessagesController < ApplicationController
     user_1_username = current_user.username
     user_1_avatar = current_user.avatar
 
-    user_2 = User.select([:id, :username]).where(username: params[:username]).first
-    user_2_id = user_2.id
-    user_2_username = user_2.username
+    @user_2 = User.select([:id, :username]).where(username: params[:username]).first
+    user_2_id = @user_2.id
+    user_2_username = @user_2.username
 
     @messages = Message.where("(sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?)", user_1_id, user_2_id, user_2_id, user_1_id)
 

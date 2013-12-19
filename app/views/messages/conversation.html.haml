@@ -2,6 +2,7 @@
 
 - @messages.each do |message|
   %ul
+    = image_tag @user_2.avatar
     %li= message.sender_username
     %li= message.recipient_username
     %li= message.content

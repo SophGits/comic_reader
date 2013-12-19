@@ -1,6 +1,6 @@
 %p#notice= notice
-
-%h1 FEEDS SHOW page
+.col-100
+  %h1 FEEDS SHOW page
 
 %p
   - if Subscription.is_subscribed?(current_user.id, @feed.id)

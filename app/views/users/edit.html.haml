@@ -14,26 +14,27 @@
     .inputgroup
       = f.label :avatar
       %br/
-      = f.file_field :avatar, :autofocus => true
+      = f.file_field :avatar
     - if devise_mapping.confirmable? && resource.pending_reconfirmation?
       %div
         Currently waiting confirmation for: #{resource.unconfirmed_email}
-    .col-25
-      .inputgroup
-        = f.label :password
-        .small (leave blank if you don't want to change it)
-        = f.password_field :password, :autocomplete => "off"
-        %br/
-        = f.label :password_confirmation
-        %br/
-        = f.password_field :password_confirmation
-        %br/
-        = f.label :current_password
-        .small (we need your current password to confirm your changes)
-        = f.password_field :current_password
-      %div= f.submit "Update"
   .col-25
     .inputgroup
-      %h3 Cancel my account
+      = f.label :password
+      .small (leave blank if you don't want to change it)
+      = f.password_field :password, :autocomplete => "off"
+      %br/
+      = f.label :password_confirmation
+      %br/
+      = f.password_field :password_confirmation
+      %br/
+      = f.label :current_password
+      .small (we need your current password to confirm your changes)
+      = f.password_field :current_password
+      %br/
+  .col-25
+    .inputgroup#update
+      = f.submit "Update"
+    .inputgroup#cancel
       #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}
     / = link_to "Back", :back

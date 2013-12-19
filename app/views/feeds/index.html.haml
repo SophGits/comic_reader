@@ -1,45 +1,44 @@
-%h1 Listing feeds
+.col-100
+  %h1 Comic strips
 
 %table
   %tr
-    %th Feed title
-    %th Feed logo
+    %th.logo
+    %th.title
     / %th Main url
     / %th Feed url
-    %th Keywords
-    %th Summary
-    %th Author
-    %th Flag count
-    %th Up vote count
-    %th Down vote count
-    %th
-    %th
-    %th
-    %th
-    %th
+    / %th.on Keywords
+    %th.summary
+    %th.author
+    / %th
+    / %th
+    / %th
+    / %th
+    / %th
+    / %th
+    / %th
+    / %th
 
   - @feeds.each do |feed|
-    %tr
-      %td.comic.feed-title{"data-feed-id" => "c"}= link_to "#{feed.title}", feed
+    %tr{class: cycle('even', 'odd')}
       %td= image_tag feed.logo
+      %td.comic.feed-title{"data-feed-id" => "c"}= link_to "#{feed.title}", feed
       / %td= feed.main_url
       / %td= feed.feed_url
-      %td= feed.keywords
+      / %td= feed.keywords
       %td= feed.summary
       %td= feed.author
-      %td= feed.flag_count
-      %td= feed.up_vote_count
-      %td= feed.down_vote_count
+      / %td= feed.flag_count
+      / %td= feed.up_vote_count
+      / %td= feed.down_vote_count
       / - if Subscription.is_subscribed?(current_user.id, feed.id)
       /   %td= link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
       / - else
       /   %td= link_to 'Subscribe', "/feeds/#{feed.id}/subscriptions", method: :post
       / %td= link_to 'Show', feed
-      %td= link_to 'Edit', edit_feed_path(feed)
-      %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
+      / %td= link_to 'Edit', edit_feed_path(feed)
+      / %td= link_to 'Destroy', feed, :method => :delete, :data => { :confirm => 'Are you sure?' }
 
 %br
 
-= link_to 'New Feed', new_feed_path
-
-#strips
+/ = link_to 'New Feed', new_feed_path

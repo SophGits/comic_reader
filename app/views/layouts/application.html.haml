@@ -8,48 +8,49 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
-  %body.grid
-    .col-100
-      %ul
-        .heading=link_to "Comic Reader", "/"
-        .searchbox
-          = form_tag searches_path do
-            / = label_tag :strip_search
-            = text_field_tag :query, 'strip'
-            = submit_tag 'search'
-      .col-menu
+  %body
+    .grid
+      .col-100
         %ul
-          - if user_signed_in?
-            %li= link_to 'Home', "/"
-            \|
-            %li=link_to 'All feeds', feeds_path
-            \|
-            %li=link_to 'Drawing Board', drawing_board_path
-            / \|
-            / %li=link_to 'inbox (messages list)', messages_path
-            \|
-            / %li="Logged in as #{current_user.email}"
-            / \|
-            -if current_user.username == "" || false
-              %li= "Welcome back!"
-            -else
-              %li="Welcome, #{current_user.username}"
-            \|
-            %li= link_to 'Edit Profile', edit_user_registration_path
-            \|
-            %li= link_to 'Logout',  destroy_user_session_path, method: :delete
-            \|
-            %li.low= image_tag (current_user.avatar.thumb)
-          - else
-            %li= link_to 'Sign up', new_user_registration_path
-            \|
-            %li= link_to 'Sign in', new_user_session_path
-            \|
-            %li= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
-            \|
-            %li=link_to 'All feeds', feeds_path
+          .heading=link_to "Comic Reader", "/"
+          .searchbox
+            = form_tag searches_path do
+              / = label_tag :strip_search
+              = text_field_tag :query, 'strip'
+              = submit_tag 'search'
+        .col-menu
+          %ul
+            - if user_signed_in?
+              %li= link_to 'Home', "/"
+              \|
+              %li=link_to 'All feeds', feeds_path
+              \|
+              %li=link_to 'Drawing Board', drawing_board_path
+              / \|
+              / %li=link_to 'inbox (messages list)', messages_path
+              \|
+              / %li="Logged in as #{current_user.email}"
+              / \|
+              -if current_user.username == "" || false
+                %li= "Welcome back!"
+              -else
+                %li="Welcome, #{current_user.username}"
+              \|
+              %li= link_to 'Edit Profile', edit_user_registration_path
+              \|
+              %li= link_to 'Logout',  destroy_user_session_path, method: :delete
+              \|
+              %li.low= image_tag (current_user.avatar.thumb)
+            - else
+              %li= link_to 'Sign up', new_user_registration_path
+              \|
+              %li= link_to 'Sign in', new_user_session_path
+              \|
+              %li= link_to "Sign in with Google", user_omniauth_authorize_path(:google_oauth2)
+              \|
+              %li=link_to 'All feeds', feeds_path
 
-      - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        - flash.each do |name, msg|
+          = content_tag :div, msg, :id => "flash_#{name}"
 
-    \#{yield}
+      \#{yield}

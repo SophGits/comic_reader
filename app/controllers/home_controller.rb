@@ -8,8 +8,10 @@ class HomeController < ApplicationController
     # end
 
 
-    rand_feed = Feed.all.sample
-    @rand_strips = rand_feed.strips
+    # rand_feed = Feed.all.sample
+    # @rand_strips = rand_feed.strips
+
+    @strips = Feed.where(feed_type: "dilbert").first.strips
 
   end
 

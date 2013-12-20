@@ -46,10 +46,6 @@ body {
   margin: 0;
   padding: 0 10px;
   padding: 4em;
-    box-shadow: 10px 10px 5px #888888;
-      -moz-box-shadow:    3px 3px 5px 6px #ccc;
-  -webkit-box-shadow: 3px 3px 5px 6px #ccc;
-  box-shadow:         3px 3px 5px 6px #ccc;
   &:after {
   /* or @extend clearfix */
   content: "";
@@ -69,6 +65,11 @@ body {
       ul { //JBD
         margin-top: 40px; //JDB
       }
+    }
+    .col-foot {
+    width: 100%;
+    background-color: $yellow;
+    height: 2em;
     }
   nav.col-menu { //JBD added nav.
     padding: 5px 0 16px 0; //JDB added
@@ -325,14 +326,15 @@ h1, h2, h3, h3, .comic {
       }
 
       table {
-        width: 100%;
+        width: 99%;
+        margin-left: 0.5%;
         .logo {}
         .title {width: 45%;}
         .summary {}
         .author {width: 15%;}
-        .odd {background-color:  #ccf;}
+        .odd {background-color: $grey_light;}
         // .odd {background-image: url("dilbert2.png");}
-        .even {background-color: #ccd;}
+        .even {background-color: $yellow;}
       }
 
 

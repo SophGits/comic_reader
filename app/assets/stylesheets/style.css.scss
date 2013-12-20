@@ -138,14 +138,14 @@ body {
     .previous, .next {
       font-family: $big-family;
       font-weight: bolder;
-      font-size: 3em;
+      font-size: 2.6em;
       z-index: 2;
       position: absolute;
       top: 60%;
       &:hover {color: $blue}
     }
     .previous{left: 1em;}
-    .next{right: 1em;}
+    .next{left: 82%;}
 
 // .nav-left
     .col-22 {
@@ -199,7 +199,7 @@ body {
 
   // central space for strip on show feed page
  .col-middle {
-    width: 80%;
+    width: 100%;
     text-align: center;
  }
   }

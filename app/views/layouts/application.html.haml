@@ -10,15 +10,15 @@
     = csrf_meta_tags
   %body
     .grid
-      .col-100
-        %ul
+      %header.col-100
+        %ul.nav-style
           .heading=link_to "Comic Reader", "/"
           .searchbox
             = form_tag searches_path do
               / = label_tag :strip_search
               = text_field_tag :query, 'strip'
               = submit_tag 'search'
-        .col-menu
+        %nav.col-menu
           %ul
             - if user_signed_in?
               %li= link_to 'Home', "/"
@@ -40,7 +40,7 @@
               \|
               %li= link_to 'Logout',  destroy_user_session_path, method: :delete
               \|
-              %li.low= image_tag (current_user.avatar.thumb)
+              %li= image_tag (current_user.avatar.thumb), class: "low"
             - else
               %li= link_to 'Sign up', new_user_registration_path
               \|

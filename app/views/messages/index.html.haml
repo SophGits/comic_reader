@@ -1,11 +1,15 @@
-%h1 Listing messages
+.col-100
+  %h1 Contacts
+  .col-22
+    - @users.each do |user|
+      - image = user.avatar
+      - username = user.username
+      %ul
+        %li
+          = image_tag ("#{image}"), class: "low"
+          = link_to username, "/messages/user/#{username}"
 
-- @users.each do |user|
-  - username = user.username
-  %ul
-  %li
-    = link_to username, "/messages/user/#{username}"
-
-%br
-
-= link_to 'New Message', new_message_path
+      %br
+    %ul
+      %li.button
+        = link_to 'New Message', new_message_path

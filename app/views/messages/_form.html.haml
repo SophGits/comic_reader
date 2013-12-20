@@ -6,15 +6,15 @@
         - @message.errors.full_messages.each do |msg|
           %li= msg
 
-  .field
+  .inputgroup
     = f.label :recipient_id
     = f.select :recipient_id, options_from_collection_for_select(@other_users, 'id', 'username')
-  .field
+  .inputgroup
     = f.label :content
     = f.text_area :content, {required: :required}
-  / .field
+  / .inputgroup
   /   = f.label :is_read
   /   = f.check_box :is_read
-  .actions
-    = f.submit 'Save'
+  .inputgroup#update
+    = f.submit 'Send'
 

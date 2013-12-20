@@ -1,5 +1,8 @@
-%h1 New message
-
-= render 'form'
-
-= link_to 'Back', messages_path
+.col-100
+  %h1 New message
+  .col-22
+    = render 'form'
+  .col-57
+    =image_tag ("cat.png")
+    %br/
+    = link_to 'Back', messages_path

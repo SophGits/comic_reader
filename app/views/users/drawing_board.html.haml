@@ -2,13 +2,13 @@
   %h1 (back to the) Drawing board
 .col-100
   .col-22
-    .small="All Notifications: #{@user.notifications.where(active: true).count} new"
+    .red="All Notifications: #{@user.notifications.where(active: true).count} new"
     %h2='Subscriptions'
     - @feeds.each do |feed|
       %ul
         %li=image_tag (feed.logo), class: "low"
         %li= link_to "#{feed.title} (#{current_user.notifications.where(feed_id: feed.id, active: true).count})", feed
-        = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+        %li.small= link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
         / = feed.notecount
 
 

@@ -131,8 +131,8 @@ body {
 
 // .nav-left
     .col-22 {
-      width: 22%;
-      min-width: 18em;
+      width: 45%;
+      // min-width: 18em;
       background: #ffee66;
       overflow: scroll;
       padding: 0.625rem; /* keeps text off the left side of the screen */
@@ -140,13 +140,11 @@ body {
           font-family: $small-font;
         }
     }
-
-
 //   .container
     .col-58 {
-      width: 58%;
-      min-width: 54em; //get rid of this (JDB)
-      max-width: 100%; //get rid of this (JDB)
+      width: 55%;
+      // min-width: 54em; //get rid of this (JDB)
+      // max-width: 100%; //get rid of this (JDB)
       min-height: 30em;
       border: black dashed 1px;
       background: #ccc;
@@ -155,8 +153,8 @@ body {
 //   .nav-right
     .col-20 {
       width: 20%;
-      min-width: 16em; //get rid of this (JDB)
-      max-width: 100%; //get rid of this (JDB)
+      // min-width: 16em; //get rid of this (JDB)
+      // max-width: 100%; //get rid of this (JDB)
       background: #ff99cc;
       height: 80%;
       overflow: scroll;

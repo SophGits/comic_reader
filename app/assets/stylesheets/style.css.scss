@@ -93,19 +93,27 @@ body {
           }
         }
             .col-25 {
-              width: 25%; //JDB put 20%
+              width: 25%;
               float: left;
               display: block; //JDB put inline-block
               margin-bottom: 30px; // JDB added
               font-family: $small-font;
             }
-      }
-
+        }
+            .col-26 {
+              width: 25%;
+              float: left;
+              display: block;
+              margin-bottom: 30px;
+              padding: 0.4em;
+              position: relative;
+              top: 0.6em;
+              color: $red;
+              a {color: $red; &:hover {color: $blue;}}
+            }
     .col-70 {width: 70%;}
     .col-30 {width: 30%;
 
-    .col-50-left {position: absolute; float:left;}
-    .col-50-right {position: relative; float:right;}
 
         li {
           font-family: $small-font;
@@ -127,8 +135,17 @@ body {
       display: inline;
     }
 
-    .previous{float: left;}
-    .next{float: right;}
+    .previous, .next {
+      font-family: $big-family;
+      font-weight: bolder;
+      font-size: 3em;
+      z-index: 2;
+      position: absolute;
+      top: 60%;
+      &:hover {color: $blue}
+    }
+    .previous{left: 1em;}
+    .next{right: 1em;}
 
 // .nav-left
     .col-22 {
@@ -179,18 +196,14 @@ body {
     margin-bottom: 2em;
     margin-right: 2em;
   }
-//   .nav-right
-//     .col-20 {
-//       width: 20%;
-//       // min-width: 16em; //get rid of this (JDB)
-//       // max-width: 100%; //get rid of this (JDB)
-//       background: #ff99cc;
-//       height: 80%;
-//       overflow: scroll;
-// //     padding: 0.625rem;
-// //     line-height: 2.2em;
-//     }
+
+  // central space for strip on show feed page
+ .col-middle {
+    width: 80%;
+    text-align: center;
+ }
   }
+
 
 
 h1, h2, h3, h3, .comic {
@@ -203,6 +216,7 @@ h1, h2, h3, h3, .comic {
   h1 {
     font-size: 2.5em;
     background-color: inherit;
+    padding: 0 1em;
     }
   h2 {
     font-size: 2.1em;
@@ -316,6 +330,8 @@ h1, h2, h3, h3, .comic {
         // .odd {background-image: url("dilbert2.png");}
         .even {background-color: #ccd;}
       }
+
+
 
 /***************
 * MEDIA QUERIES *

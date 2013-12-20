@@ -1,108 +1,108 @@
 %p#notice= notice
 .col-100
-  .col-50-left
+  .col-25
     %h1="#{@feed.title}"
-  .col-50-right
-    =image_tag @feed.logo
+  .col-26
+    =image_tag (@feed.logo), class: "low"
     - if Subscription.is_subscribed?(current_user.id, @feed.id)
       = link_to 'Unsubscribe', "/feeds/#{@feed.id}/subscriptions", method: :delete
     - else
       = link_to 'Subscribe', "/feeds/#{@feed.id}/subscriptions", method: :post
+  .col-middle
+    / %ul
+    /   %li
+    /     %b Feed title:
+    /     = @feed.title
+    /   %li
+    /     %b Feed logo:
+    /     =image_tag @feed.logo
+    /   %li
+    /     %b Main url:
+    /     = @feed.main_url
+    /   %li
+    /     %b Feed url:
+    /     = @feed.feed_url
+    /   %li
+    /     %b Keywords:
+    /     = @feed.keywords
+    /   %li
+    /     %b Summary:
+    /     = @feed.summary
+    /   %li
+    /     %b Author:
+    /     = @feed.author
+    /   %li
+    /     %b Flag count:
+    /     = @feed.flag_count
+    /   %li
+    /     %b Up vote count:
+    /     = @feed.up_vote_count
+    /   %li
+    /     %b Down vote count:
+    /     = @feed.down_vote_count
 
-/ %ul
-/   %li
-/     %b Feed title:
-/     = @feed.title
-/   %li
-/     %b Feed logo:
-/     =image_tag @feed.logo
-/   %li
-/     %b Main url:
-/     = @feed.main_url
-/   %li
-/     %b Feed url:
-/     = @feed.feed_url
-/   %li
-/     %b Keywords:
-/     = @feed.keywords
-/   %li
-/     %b Summary:
-/     = @feed.summary
-/   %li
-/     %b Author:
-/     = @feed.author
-/   %li
-/     %b Flag count:
-/     = @feed.flag_count
-/   %li
-/     %b Up vote count:
-/     = @feed.up_vote_count
-/   %li
-/     %b Down vote count:
-/     = @feed.down_vote_count
+    /   = link_to 'Edit', edit_feed_path(@feed)
+    /   \|
+    /   = link_to 'Back', feeds_path
+    /   \|
+    /   = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
+    /   \|
+    #strip
+      / .keywords
+      /   Keywords:
+      /   / = @strip.keywords
+      / .up-votes
+      /   Up-votes:
+      /   / = @strip.up_vote_count
+      / .down-votes
+      /   Down-votes:
+      /   / = @strip.down_vote_count
+      / .created-at
+      /   Created at:
+      /   / = @strip.created_at
+      .image
+        / =image_tag (@strip.strip_url)
+      .comments-count
+        / Comments count (viewable on show page):
+        / = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
+      .links
+        %a.previous << Previous
+        %a.next Next >>
 
-/   = link_to 'Edit', edit_feed_path(@feed)
-/   \|
-/   = link_to 'Back', feeds_path
-/   \|
-/   = link_to 'Add a strip to feed', new_feed_strip_path(@feed)
-/   \|
-#strip
-  / .keywords
-  /   Keywords:
-  /   / = @strip.keywords
-  / .up-votes
-  /   Up-votes:
-  /   / = @strip.up_vote_count
-  / .down-votes
-  /   Down-votes:
-  /   / = @strip.down_vote_count
-  / .created-at
-  /   Created at:
-  /   / = @strip.created_at
-  .image
-    / =image_tag (@strip.strip_url)
-  .comments-count
-    / Comments count (viewable on show page):
-    / = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
-  .links
-    %a.previous Previous
-    %a.next Next
+  :javascript
+    $(function() {
 
-:javascript
-  $(function() {
+      function getStrip(strip_id) {
+        $.ajax({
+          url: "/feeds/" + #{@feed.id} + "/get_strip",
+          type: "GET",
+          dataType: "json",
+          data: {
+            strip_id: strip_id
+          },
+          success: function(strip) {
+            var $strip = $("#strip");
 
-    function getStrip(strip_id) {
-      $.ajax({
-        url: "/feeds/" + #{@feed.id} + "/get_strip",
-        type: "GET",
-        dataType: "json",
-        data: {
-          strip_id: strip_id
-        },
-        success: function(strip) {
-          var $strip = $("#strip");
+            $("#strip .keywords").append(strip.keywords);
+            $("#strip .up-votes").append(strip.up_vote_count);
+            $("#strip .down-votes").append(strip.down_vote_count);
+            // $("#strip .comments-count").append();
 
-          $("#strip .keywords").append(strip.keywords);
-          $("#strip .up-votes").append(strip.up_vote_count);
-          $("#strip .down-votes").append(strip.down_vote_count);
-          // $("#strip .comments-count").append();
+            $("#strip .image").html("");
+            $("#strip .image").append("<img src='" + strip.strip_url + "'>");
 
-          $("#strip .image").html("");
-          $("#strip .image").append("<img src='" + strip.strip_url + "'>");
+            $("#strip .links .previous").data("strip-id", strip.previous_strip_id);
+            $("#strip .links .next").data("strip-id", strip.next_strip_id);
+          }
+        });
+      }
 
-          $("#strip .links .previous").data("strip-id", strip.previous_strip_id);
-          $("#strip .links .next").data("strip-id", strip.next_strip_id);
-        }
+      $(".previous, .next").click(function(e) {
+        e.preventDefault();
+
+        var strip_id = $(this).data("strip-id");
+        getStrip(strip_id);
       });
-    }
 
-    $(".previous, .next").click(function(e) {
-      e.preventDefault();
-
-      var strip_id = $(this).data("strip-id");
-      getStrip(strip_id);
+      getStrip(null);
     });
-
-    getStrip(null);
-  });

@@ -1,19 +1,19 @@
 %p#notice= notice
+.col-100
+  %p
+    %b From:
+    = @sender.username
+  %p
+    %b Recipient:
+    = @recipient.username
+  %p
+    %b Content:
+    = @message.content
+  / %p
+  /   %b Is read:
+  /   = @message.is_read
 
-%p
-  %b From:
-  = @sender.username
-%p
-  %b Recipient:
-  = @recipient.username
-%p
-  %b Content:
-  = @message.content
-%p
-  %b Is read:
-  = @message.is_read
 
-
-= link_to 'Edit', edit_message_path(@message)
-\|
-= link_to 'Back', messages_path
+  / = link_to 'Edit', edit_message_path(@message)
+  / \|
+  = link_to 'Back', messages_path

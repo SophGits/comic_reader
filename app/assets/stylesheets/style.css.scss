@@ -233,8 +233,7 @@ body {
             background-color: $yellow;
             border: 1px solid $grey_light;
           }
-
-  }
+         }
      #update input{
         background-color: #66cc00;
         width: 9em;
@@ -249,10 +248,15 @@ body {
         font-size: 1.6em;
         border-radius: 15px;
       }
-        .img {
-          padding-left: 4.5em;
-          padding-top: 0.8em;
-        }
+
+      .img {
+        padding-left: 4.5em;
+        padding-top: 0.8em;
+      }
+          #signupimg {
+            // padding-left: 9em;
+            margin-left: 5em;
+          }
 
       table {
         width: 100%;

@@ -11,6 +11,7 @@ $grey_light: #ABC4CA;
 $yellow    : #ffff33;
 $red       : #ff3333;
 $blue      : #0000ff;
+$green     : #66cc00;
 
 /* This is telling the browser to calculate everything from the border inwards; not the content outwards. Previously, adding padding would increase the width & height of your containers by the amount of padding and break your layout */
 *, *:before, *:after {
@@ -131,61 +132,66 @@ body {
 
 // .nav-left
     .col-22 {
-      width: 45%;
-      // min-width: 18em;
-      background: #ffee66;
+      width: 55%;
+      // background: #ffee66;
       overflow: scroll;
-      padding: 0.625rem; /* keeps text off the left side of the screen */
-        ul li {
+      padding: 0.9rem; /* keeps text off the left side of the screen */
+          ul li {
           font-family: $small-font;
-        }
+          list-style-type: none;
+          display: inline;
+      }
     }
 //   .container
     .col-58 {
-      width: 55%;
-      // min-width: 54em; //get rid of this (JDB)
-      // max-width: 100%; //get rid of this (JDB)
-      min-height: 30em;
+      width: 40%;
+      min-height: 20em;
       border: black dashed 1px;
-      background: #ccc;
+      background: white;
       overflow: auto;
+      text-align: center;
+      margin-bottom: 2em;
+      margin-right: 2em;
     }
 //   .nav-right
-    .col-20 {
-      width: 20%;
-      // min-width: 16em; //get rid of this (JDB)
-      // max-width: 100%; //get rid of this (JDB)
-      background: #ff99cc;
-      height: 80%;
-      overflow: scroll;
-//     padding: 0.625rem;
-//     line-height: 2.2em;
-    }
+//     .col-20 {
+//       width: 20%;
+//       // min-width: 16em; //get rid of this (JDB)
+//       // max-width: 100%; //get rid of this (JDB)
+//       background: #ff99cc;
+//       height: 80%;
+//       overflow: scroll;
+// //     padding: 0.625rem;
+// //     line-height: 2.2em;
+//     }
   }
 
+
+h1, h2, h3, h3, .comic {
+      font-family: $family;
+      a {
+        color: $grey_dark;
+        &:hover { color: $blue; }
+      }
+}
   h1 {
-    font-family: $family;
-    // font-size: 2.8em;
+    font-size: 2.5em;
     background-color: inherit;
     }
   h2 {
-    font-family: $family;
-    font-size: 2.2em;
+    font-size: 2.1em;
     line-height: 1em;
   }
   h3 {
-    font-family: $family;
     font-size: 1.8em;
     line-height: 1em;
   }
   h4 {
-    font-family: $family;
     font-size: 1.4em;
     line-height: 1em;
   }
 
   .comic {
-    font-family: $family;
     font-size: 1.5em;
     line-height: 1.4em;
   }
@@ -260,14 +266,14 @@ body {
           }
          }
      #update input{
-        background-color: #66cc00;
+        background-color: $green;
         width: 9em;
         font-family: $family;
         font-size: 1.6em;
         border-radius: 15px;
       }
      #cancel input{
-        background-color: #ff0000;
+        background-color: $red;
         width: 9em;
         font-family: $family;
         font-size: 1.6em;

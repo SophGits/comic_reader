@@ -1,21 +1,21 @@
 .col-100
   %h1 (back to the) Drawing board
-
-.col-22
-  %h3='All subscriptions'
-  %ul
+.col-100
+  .col-22
+    .small="All Notifications: #{@user.notifications.where(active: true).count} new"
+    %h2='Subscriptions'
     - @feeds.each do |feed|
-      %li= link_to "#{feed.title} (#{current_user.notifications.where(feed_id: feed.id, active: true).count})", feed
-      = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
-      / = feed.notecount
-  %h4='All Notifications'
-  = "#{@user.notifications.where(active: true).count} new"
+      %ul
+        %li=image_tag (feed.logo), class: "low"
+        %li= link_to "#{feed.title} (#{current_user.notifications.where(feed_id: feed.id, active: true).count})", feed
+        = link_to 'Unsubscribe', "/feeds/#{feed.id}/subscriptions", method: :delete
+        / = feed.notecount
 
 
-.col-58
-  %h3=link_to 'Inbox (messages list)', messages_path
-  / =render "messages/conversation"
-  %br
-  =image_tag "wrong.png"
+  .col-58
+    %h2=link_to '>> Inbox', messages_path
+    / =render "messages/conversation"
+    %br
+    =image_tag "wrong.png"
 
 

@@ -17,7 +17,7 @@
           .searchbox
             = form_tag searches_path do
               / = label_tag :strip_search
-              = text_field_tag :query, 'strip'
+              = text_field_tag :query, '', placeholder: "strip"
               = submit_tag 'search'
         %nav.col-menu
           %ul

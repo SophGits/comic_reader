@@ -21,7 +21,7 @@
 
     - @feeds.each do |feed|
       %tr{class: cycle('even', 'odd')}
-        %td= image_tag feed.logo
+        %td= image_tag (feed.logo), class: "logosize"
         %td.comic.feed-title{"data-feed-id" => "c"}= link_to "#{feed.title}", feed
         / %td= feed.main_url
         / %td= feed.feed_url

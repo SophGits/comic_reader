@@ -8,20 +8,20 @@
   %p
     %b Strip url:
     = image_tag (@strip.strip_url)
-  %p
-    %b Keywords:
-    = @strip.keywords
-  %p
-    %b Flag count:
-    = @strip.flag_count
-  %p
-    %b Up vote count:
-    = @strip.up_vote_count
-  %p
-    %b Down vote count:
-    = @strip.down_vote_count
+  / %p
+  /   %b Keywords:
+  /   = @strip.keywords
+  / %p
+  /   %b Flag count:
+  /   = @strip.flag_count
+  / %p
+  /   %b Up vote count:
+  /   = @strip.up_vote_count
+  / %p
+  /   %b Down vote count:
+  /   = @strip.down_vote_count
 
-  = link_to 'Edit', edit_feed_strip_path(@feed, @strip)
+  / = link_to 'Edit', edit_feed_strip_path(@feed, @strip)
   = link_to "Back to the #{@feed.title} feed", feed_path(@feed)
 
   %h2 Comments

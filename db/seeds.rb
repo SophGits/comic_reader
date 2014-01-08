@@ -22,7 +22,7 @@ message2 = Message.create(sender_id: shaniqua.id, recipient_id: bob.id, content:
 #Rita messages Bob
 message2 = Message.create(sender_id: rita.id, recipient_id: bob.id, content: "Hi Bob - from Rita.", is_read: false)
 
-cyanide = Feed.create(title: "Cyanide and Happiness", logo: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/s48x48/276807_67400590475_706984281_q.jpg", main_url: "b", feed_url: "http://feeds.feedburner.com/Explosm", keywords: "d", summary: "Cartoon people doing dark humour.", author: "f", flag_count: 0, up_vote_count: 5, down_vote_count: 1, feed_type: "explosm")
+cyanide = Feed.create(title: "Cyanide and Happiness", logo: "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-ash1/s48x48/276807_67400590475_706984281_q.jpg", main_url: "b", feed_url: "http://feeds.feedburner.com/Explosm", keywords: "d", summary: "Cartoon people doing dark humour.", author: "Kris Wilson, Rob DenBleyker, Matt Melvin and Dave McElfatrick", flag_count: 0, up_vote_count: 5, down_vote_count: 1, feed_type: "explosm")
 cyanide.save!
 
 ExplosmFeedParser.new.get_old_strips(cyanide)
@@ -41,12 +41,12 @@ DilbertFeedParser.new.get_old_strips(dilbert)
 # comment2 = dilbert_strip.comments.create(content: "Hey! Everybody loves Dogbert, right?!", flag_count: 0, up_vote_count: 2, down_vote_count: 1, user_id: shaniqua.id)
 # comment1.save!
 
-doghouse = Feed.create(title: "Doghouse Diaries", logo: "", main_url: "", feed_url: "http://feeds2.feedburner.com/thedoghousediaries/feed", keywords: "doghouse diaries", summary: "Stick people, flow charts.", author: "Will, Ray & Raf", feed_type: "doghouse")
+doghouse = Feed.create(title: "Doghouse Diaries", logo: "doghouse.png", main_url: "", feed_url: "http://feeds2.feedburner.com/thedoghousediaries/feed", keywords: "doghouse diaries", summary: "Stick people, flow charts.", author: "Will, Ray & Raf", feed_type: "doghouse")
 doghouse.save!
 
 # DoghouseFeedParser.new.get_old_strips(doghouse)
 
-xkcd = Feed.create(title: "XKCD", logo: "", main_url: "", feed_url: "http://xkcd.com/rss.xml", keywords: "science, maths, programming, love", summary: "Stick people, science, technology and life.", author: "Anonymous Physics Enthuiast", feed_type: "xkcd")
+xkcd = Feed.create(title: "XKCD", logo: "xkcdlogo.png", main_url: "", feed_url: "http://xkcd.com/rss.xml", keywords: "science, maths, programming, love", summary: "Stick people, science, technology and life.", author: "Anonymous Physics Enthuiast", feed_type: "xkcd")
 xkcd.save!
 
 XkcdFeedParser.new.get_old_strips(xkcd)
@@ -73,7 +73,7 @@ pbf.save!
 oatmeal = Feed.create(title: "The Oatmeal", logo: "oatmeal.png", main_url: "oatmeal.png", feed_url: "http://feeds.feedburner.com/oatmealfeed", keywords: "running, cats, unicorns", summary: "Poster-like", author: "Matthew Inman", feed_type: "oatmeal")
 oatmeal.save!
 
-sarah = Feed.create(title: "Sarah Anderson Comics", logo: "sarahandersen.png", main_url: "", feed_url: "http://sarahseeandersen.tumblr.com/", keywords: "cats, art", summary: "An art student who draws comics", author: "Sarah Anderson", feed_type: "sarah")
+sarah = Feed.create(title: "Sarah Anderson Comics", logo: "sarahanderson.png", main_url: "", feed_url: "http://sarahseeandersen.tumblr.com/", keywords: "cats, art", summary: "An art student who draws comics", author: "Sarah Anderson", feed_type: "sarah")
 sarah.save!
 
 twitter = Feed.create(title: "Twitter the Comic", logo: "twitterthecomic.png", main_url: "", feed_url: "http://twitterthecomic.tumblr.com/", keywords: "@VectorBelly, twitter, tweets", summary: "Comics inspired by tweets.", author: "Mike Rosenthal", feed_type: "twitter")

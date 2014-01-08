@@ -35,7 +35,7 @@ module ParserHelper
     end
     # ARCHIVED EXPLOSM -- CHANGE NUMBERS FOR MORE (BUT WILL TAKE FOREVER TO PROCESS) ###
     def get_old_strips(feed)
-      (3000..3020).each do |index|
+      (3000..3100).each do |index|
         entry_url = "http://www.explosm.net/comics/" + index.to_s
         load_strip(entry_url, feed)
       end
@@ -84,7 +84,7 @@ module ParserHelper
     end
     ######## ALTER NUMBERS WHEN LAUNCH ########################
     def get_old_strips(feed)
-      (1..20).each do |index|
+      (1..100).each do |index|
         entry_url = "http://xkcd.com/" + index.to_s
         load_strip(entry_url, feed)
       end

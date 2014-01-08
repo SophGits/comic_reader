@@ -4,7 +4,6 @@ class CommentsController < ApplicationController
   def index
     @comments = Comment.all
 
-# this is probably wrong*****************************
     feed = Feed.find(params[:feed_id])
     @strip = feed.strips.find(params[:strip_id])
 

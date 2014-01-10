@@ -33,7 +33,7 @@
   - @strip.comments.each do |comment|
     %li= comment.content
     ="posted by #{comment.user_id}" #REALLY THIS NEEDS TO BE USERNAME
-    = link_to "upvote", upvote_feed_strip_comment_path(@feed, @strip, comment)
+    = link_to "upvote", upvote_feed_strip_comment_path(@feed, @strip, comment.id)
     = comment.likes.size
 
   %h2 Add a comment:

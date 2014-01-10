@@ -120,6 +120,8 @@ class FeedsController < ApplicationController
       previous_strip_id = feed.strips.last.id
     end
 
+    # comments = feed.strip.comments TRYING TO MAKE THIS AVAILABLE IN VIEW
+
     render json: strip.as_json.merge({next_strip_id: next_strip_id, previous_strip_id: previous_strip_id})
   end
 end

@@ -6,7 +6,7 @@ class Strip < ActiveRecord::Base
   has_many :notifications
   has_many :users, through: :notifications
 
-  # acts_as_votable
+  acts_as_votable
 
   # accepts_nested_attributes_for :comments
 

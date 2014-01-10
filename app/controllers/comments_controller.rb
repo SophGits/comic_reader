@@ -93,4 +93,18 @@ class CommentsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+   def upvote
+    feed = Feed.find(params[:feed_id])
+    strip = Strip.find(params[:strip_id])
+    @comment = Comment.find(params[:id])
+    current_user.likes(@comment)
+    flash[:message] = 'Thanks for upvoting!'
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+
+
 end

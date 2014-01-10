@@ -13,7 +13,14 @@ ComicReader::Application.routes.draw do
 
   resources :feeds do
     resources :strips do
-      resources :comments
+      member do
+        get :upvote
+      end
+      resources :comments do
+        member do
+          get :upvote
+        end
+      end
     end
 
     get "/get_strip", to: "feeds#get_strip"
@@ -21,6 +28,7 @@ ComicReader::Application.routes.draw do
     resources :subscriptions
     delete "/subscriptions", to: "subscriptions#unsubscribe"
   end
+
 
   get "/feeds/:feed_id/strips", to: "strips#show"
 

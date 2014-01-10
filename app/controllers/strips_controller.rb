@@ -89,4 +89,16 @@ class StripsController < ApplicationController
   def random
     render json: Strip.where(feed_id: params[:feed_id]).first(order: "RANDOM()")
   end
+
+  def upvote
+    @feed = Feed.find(params[:feed_id])
+    @strip = Strip.find(params[:id])
+    current_user.likes(@strip)
+    flash[:message] = 'Thanks for upvoting!'
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js
+    end
+  end
+
 end

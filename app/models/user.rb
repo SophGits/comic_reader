@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  # acts_as_voter
+  acts_as_voter
 
   has_many :comments
   has_many :subscriptions

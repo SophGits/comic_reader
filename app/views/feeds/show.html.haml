@@ -51,9 +51,9 @@
       / .keywords
       /   Keywords:
       /   / = @strip.keywords
-      / .up-votes
-      /   Up-votes:
-      /   / = @strip.up_vote_count
+      .up-votes
+        Up-votes:
+        %span
       / .down-votes
       /   Down-votes:
       /   / = @strip.down_vote_count
@@ -63,8 +63,11 @@
       .image
         / =image_tag (@strip.strip_url)
       .comments-count
-        / Comments count (viewable on show page):
-        / = link_to pluralize(@strip.comments.count, "comment"), feed_strip_path(@feed, @strip)
+        Comments count (
+        %a#view_comments{href: "#"}
+          viewable on show page
+        ):
+        %span
       .links
         %a.previous << Previous
         %a.next Next >>
@@ -83,12 +86,14 @@
           },
           success: function(strip) {
             var $strip = $("#strip");
-
+            console.log(strip);
             $("#strip .keywords").append(strip.keywords);
-            $("#strip .up-votes").append(strip.up_vote_count);
+            $("#strip .up-votes span").append(strip.up_vote_count);
             $("#strip .down-votes").append(strip.down_vote_count);
-            // $("#strip .comments-count").append(comments.count);
-
+            $("#strip .comments-count span").append(strip.comments_count);
+            $("#strip #view_comments").attr("href",
+              "/feeds/"+strip.feed_id+"/strips/"+strip.id
+            )
             $("#strip .image").html("");
             $("#strip .image").append("<img src='" + strip.strip_url + "'>");
 

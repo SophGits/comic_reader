@@ -1,5 +1,5 @@
 .col-100
-  %h1 Contacts
+  %h1 Inbox
   .col-22
     - @users.each do |user|
       - image = user.avatar
@@ -10,6 +10,7 @@
           = link_to username, "/messages/user/#{username}"
 
       %br
+  .col-58
     %ul
       %li.button
         = link_to 'New Message', new_message_path

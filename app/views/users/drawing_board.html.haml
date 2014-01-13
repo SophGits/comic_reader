@@ -2,8 +2,8 @@
   %h1 (back to the) Drawing board
 .col-100
   .col-22
-    .red="All Notifications: #{@user.notifications.where(active: true).count} new"
     %h2='Subscriptions'
+    .red="All Notifications: #{@user.notifications.where(active: true).count} new"
     - @feeds.each do |feed|
       %ul
         %li=image_tag (feed.logo), class: "low"
@@ -12,11 +12,17 @@
         / = feed.notecount
 
 
+
   .col-58
     %h2=link_to '>> Inbox', messages_path
-    / =render "messages/conversation"
+    =image_tag 'message.png'
+    / =render template "messages/index"
     %br
     =image_tag "wrong.png"
+
+    / %a{href: messages_path}
+    /   =image_tag "message.png"
+    /   Go to inbox
 .col-foot
 
 

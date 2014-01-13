@@ -3,11 +3,14 @@
 .col-100
 
   - @messages.each do |message|
-    %ul
-      = image_tag @user_2.avatar
-      %li= message.sender_username
-      %li= message.recipient_username
-      %li= message.content
+    .conversation
+      .users
+        .avatar= image_tag @user_2.avatar
+        = message.sender_username
+        to
+        = message.recipient_username
+      .msgcontent
+        = message.content
       / %li= message.is_read
       / = link_to 'Show', message
       / = link_to 'Edit', edit_message_path(message)

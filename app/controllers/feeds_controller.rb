@@ -121,7 +121,11 @@ class FeedsController < ApplicationController
     end
 
     # comments = feed.strip.comments TRYING TO MAKE THIS AVAILABLE IN VIEW
+    # strip.to_json(:include => :comments)
 
-    render json: strip.as_json.merge({next_strip_id: next_strip_id, previous_strip_id: previous_strip_id})
+    render json: strip.as_json.merge({next_strip_id: next_strip_id, previous_strip_id: previous_strip_id, up_vote_count: strip.likes.size, comments_count: strip.comments.size})
+
+
+
   end
 end

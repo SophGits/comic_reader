@@ -8,7 +8,7 @@ Strip.destroy_all
 bob = User.create(username: "Bob", email: "bob@bob.com", role: "admin", password: "password", created_at: DateTime.now, avatar: "http://andromeda.star.bris.ac.uk/~mbt/treeview/icons/TREE_LOGO.gif")
 bob.save!
 
-shaniqua = User.create(username: "shaniqua", email: "shaniqua@shaniqua.com", role: "user", password: "password", created_at: DateTime.now, avatar: "http://www.pensionstalk.co.uk/wp-content/uploads/2010/11/blue-butterfly.JPG")
+shaniqua = User.create(username: "Shaniqua", email: "shaniqua@shaniqua.com", role: "user", password: "password", created_at: DateTime.now, avatar: "http://www.pensionstalk.co.uk/wp-content/uploads/2010/11/blue-butterfly.JPG")
 shaniqua.save!
 
 rita = User.create(username: "Rita", email: "rita@rita.com", role: "user", password: "password", created_at: DateTime.now, avatar: "http://www.mricons.com/store/png/836_1430_128_development_hammer_package_tool_icon.png")

@@ -22,8 +22,8 @@
         %nav.col-menu
           %ul
             - if user_signed_in?
-              %li= link_to 'Home', "/"
-              \|
+              / %li= link_to 'Home', "/"
+              / \|
               %li=link_to 'All feeds', feeds_path
               \|
               %li=link_to 'Drawing Board', drawing_board_path
@@ -36,12 +36,12 @@
                 %li= "Welcome back!"
               -else
                 %li="Welcome, #{current_user.username}"
-              \|
-              %li= link_to 'Edit Profile', edit_user_registration_path
+              /\|
+              /%li= link_to 'Edit Profile', edit_user_registration_path
               \|
               %li= link_to 'Logout',  destroy_user_session_path, method: :delete
               \|
-              %li= image_tag (current_user.avatar.thumb), class: "low"
+              %li.img= link_to (image_tag (current_user.avatar.thumb), class: "low"), edit_user_registration_path
             - else
               %li= link_to 'Sign up', new_user_registration_path
               \|

@@ -43,9 +43,10 @@ body {
 // Contains everything. Leaves perimeter gap for comic background.
 .grid {
   width: 100%;
-  margin: 0;
-  padding: 0 10px;
-  padding: 4em;
+  height: 100%;
+  padding: 4.5em;
+  position: fixed;
+  overflow: scroll;
   &:after {
   /* or @extend clearfix */
   content: "";
@@ -60,9 +61,8 @@ body {
 // nav.nav-top
   .col-100 {
     width: 100%;
-    // border: 1px solid black;
+    margin: 0 auto;
     background-color: $yellow;
-    // height: 100px; //JDB
       ul { //JBD
         margin-top: 40px; //JDB
       }
@@ -159,7 +159,7 @@ body {
       font-weight: bolder;
       font-size: 2.6em;
       z-index: 2;
-      position: absolute;
+      position: fixed;
       top: 60%;
       &:hover {color: $blue}
     }

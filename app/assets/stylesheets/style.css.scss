@@ -356,9 +356,8 @@ h1, h2, h3, h3, .comic {
         border-radius: 15px;
       }
 
-    textarea#comment_content {
-      background-color: white;
-      background: url(edit.png) center center no-repeat; /* This ruins default border */
+    textarea{
+      background: white url(edit.png) center center no-repeat; /* This ruins default border */
       font-size: 1.8em;
       font-family: $small-font;
       color: $grey_dark;
@@ -366,6 +365,8 @@ h1, h2, h3, h3, .comic {
       border: 1px solid $grey_light;
       border-radius: 5px;
       max-height: 8em;
+      &#comment_content {}
+      &#message_content{max-width: 15em;}
     }
 
       table {

@@ -10,8 +10,8 @@
     = f.label :recipient_id
     = f.select :recipient_id, options_from_collection_for_select(@other_users, 'id', 'username')
   .inputgroup
-    = f.label :content
     = f.text_area :content, {required: :required}
+  /  = f.label :content
   / .inputgroup
   /   = f.label :is_read
   /   = f.check_box :is_read

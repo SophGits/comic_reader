@@ -199,8 +199,6 @@ body {
     .col-58 {
       width: 40%;
       min-height: 20em;
-      // border: black dashed 1px;
-      // background: white;
       overflow: auto;
       text-align: center;
       margin-bottom: 2em;
@@ -230,6 +228,14 @@ body {
           font-size: 1.5em;
           a:hover {color: $blue;}
       }
+    }
+
+    .wrong {
+      border: black dashed 1px;
+      background: white;
+      padding: 0.5em;
+      position: relative;
+      left: 1em;
     }
 // New message page
   .col-57 {

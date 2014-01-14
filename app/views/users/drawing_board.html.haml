@@ -15,10 +15,9 @@
 
   .col-58
     %h2=link_to '>> Inbox', messages_path
-    =image_tag 'message.png'
     / =render template "messages/index"
     %br
-    =image_tag "wrong.png"
+    =image_tag "wrong.png", class: "wrong"
 
     / %a{href: messages_path}
     /   =image_tag "message.png"

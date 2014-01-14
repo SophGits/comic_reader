@@ -213,6 +213,15 @@ body {
               font-size: 1.6em;
               border-radius: 15px;
             }
+            .button-conversation {
+              background-color: $green;
+              padding: 0.6em;
+              width: 12em;
+              font-family: $family;
+              font-size: 1.6em;
+              border-radius: 15px;
+              margin-left: -15em;
+            }
           ul li {
           font-family: $small-font;
           color: $grey_dark;
@@ -473,6 +482,7 @@ and (orientation : portrait) {
     background-color: white;
     border-radius: 5px;
     overflow: scroll;
+    font-size: 1.2em;
   }
 }
 

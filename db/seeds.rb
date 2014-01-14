@@ -59,7 +59,7 @@ DinosaurFeedParser.new.get_old_strips(dinosaur)
 # vagrant = Feed.create(title: "Hark! A vagrant!", logo: "", main_url: "", feed_url: "http://www.harkavagrant.com/archive.php", keywords: "vagrants", summary: "", author: "", feed_type: "vagrant")
 # vagrant.save!
 
-ctrl = Feed.create(title: "CTRL+ALT+DEL", logo: "", main_url: "cad.png", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "Robots, gaming, geeks, programming, CAD", summary: "Started in the early 2000's, about two roommates", author: "Tim Buckley", feed_type: "ctrl")
+ctrl = Feed.create(title: "CTRL+ALT+DEL", logo: "cad.png", main_url: "cad.png", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "Robots, gaming, geeks, programming, CAD", summary: "Started in the early 2000's, about two roommates", author: "Tim Buckley", feed_type: "ctrl")
 ctrl.save!
 
 # cat = Feed.create(title: "Simon's Cat", logo: "", main_url: "", feed_url: "http://cdn.cad-comic.com/rss.xml", keywords: "blah blah blah", summary: "", author: "Simon Tofield", feed_type: "cat")

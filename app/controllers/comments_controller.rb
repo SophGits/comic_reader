@@ -99,7 +99,7 @@ class CommentsController < ApplicationController
     strip = Strip.find(params[:strip_id])
     @comment = Comment.find(params[:id])
     current_user.likes(@comment)
-    flash[:message] = 'Thanks for upvoting!'
+    flash[:message] = 'Liked!'
     respond_to do |format|
       format.html { redirect_to :back }
       format.js

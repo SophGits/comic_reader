@@ -51,9 +51,6 @@
       / .keywords
       /   Keywords:
       /   / = @strip.keywords
-      .up-votes
-        Up-votes:
-        %span
       / .down-votes
       /   Down-votes:
       /   / = @strip.down_vote_count
@@ -62,12 +59,14 @@
       /   / = @strip.created_at
       .image
         / =image_tag (@strip.strip_url)
-      .comments-count
-        Comments count (
-        %a#view_comments{href: "#"}
-          viewable on show page
-        ):
+      .up-votes
+        Liked by
         %span
+        people
+      .comments-count
+        %a#view_comments{href: "#"}
+          View comments:
+          %span
       .links
         %a.previous << Previous
         %a.next Next >>

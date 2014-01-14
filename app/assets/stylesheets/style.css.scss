@@ -118,6 +118,17 @@ body {
               color: $red;
               a {color: $red; &:hover {color: $blue;}}
             }
+            // on strip show page
+            .col-27 {
+              width: 40%;
+              float: left;
+              display: inline-block;
+              margin-bottom: 30px;
+              padding: 0.4em;
+              position: relative;
+              top: 0.6em;
+              a {color: $red; &:hover {color: $blue;}}
+            }
     .col-70 {width: 70%;}
     .col-30 {width: 30%;
 
@@ -344,6 +355,18 @@ h1, h2, h3, h3, .comic {
         font-size: 1.6em;
         border-radius: 15px;
       }
+
+    textarea#comment_content {
+      background-color: white;
+      background: url(edit.png) center center no-repeat; /* This ruins default border */
+      font-size: 1.8em;
+      font-family: $small-font;
+      color: $grey_dark;
+      padding: 0.2em; /* padding of text within box */
+      border: 1px solid $grey_light;
+      border-radius: 5px;
+      max-height: 8em;
+    }
 
       table {
         width: 99%;

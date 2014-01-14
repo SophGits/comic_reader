@@ -1,13 +1,24 @@
 %p#notice= notice
 .col-100
-  %h1 Comment on this strip?
+  .col-25
+    %h1
+      = link_to "Like this strip?", upvote_feed_strip_path(@feed, @strip)
+      (
+      = @strip.likes.size
+      )
+  .col-27
+    = image_tag (@feed.logo), class: "low"
+    = link_to "Back to #{@feed.title}", feed_path(@feed)
+  %br
+  %br
 
-  %p
-    %strong Title:
-    = @strip.id
-  %p
-    %b Strip url:
+  .col-25
     = image_tag (@strip.strip_url)
+  %p
+    / %strong Title:
+    / = @strip.id
+  %p
+    / %b Strip url:
   / %p
   /   %b Keywords:
   /   = @strip.keywords
@@ -22,25 +33,22 @@
   /   = @strip.down_vote_count
 
   / = link_to 'Edit', edit_feed_strip_path(@feed, @strip)
-  = link_to "Back to the #{@feed.title} feed", feed_path(@feed)
+  .col-27
+    %h2
+      = pluralize(@strip.comments.count, "comment") + ": "
+    - @strip.comments.each do |comment|
+      "
+      = comment.content
+      "
+      / ="posted by #{comment.user_id}" #REALLY THIS NEEDS TO BE USERNAME
+      = link_to "Like", upvote_feed_strip_comment_path(@feed, @strip, comment.id)
+      (
+      = comment.likes.size
+      )
+      %br
 
-  = link_to "upvote", upvote_feed_strip_path(@feed, @strip)
-  = @strip.likes.size
-
-  %h2 Comments
-  = "There are " + pluralize(@strip.comments.count, "comment") + " for this strip."
-  %ul
-  - @strip.comments.each do |comment|
-    %li= comment.content
-    ="posted by #{comment.user_id}" #REALLY THIS NEEDS TO BE USERNAME
-    = link_to "upvote", upvote_feed_strip_comment_path(@feed, @strip, comment.id)
-    = comment.likes.size
-
-  %h2 Add a comment:
-  = form_for([@feed, @strip, @strip.comments.build]) do |f|
-    %p
-      = f.label :content
-      %br/
-      = f.text_area :content
-    %p
-      = f.submit
+    = form_for([@feed, @strip, @strip.comments.build]) do |f|
+      %p
+        = f.text_area :content
+      .inputgroup#update
+        = f.submit 'Comment!'
